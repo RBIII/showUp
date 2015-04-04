@@ -11,13 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328192018) do
+ActiveRecord::Schema.define(version: 20150404182024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bands", force: :cascade do |t|
-    t.string "name", null: false
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorite_bands", force: :cascade do |t|
+    t.boolean  "favorite",   null: false
+    t.integer  "user_id",    null: false
+    t.integer  "band_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorite_venues", force: :cascade do |t|
+    t.boolean  "favorite",   null: false
+    t.integer  "user_id",    null: false
+    t.integer  "venue_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "body",       null: false
+    t.integer  "user_id",    null: false
+    t.integer  "band_id",    null: false
+    t.integer  "venue_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "show_votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "show_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "shows", force: :cascade do |t|
@@ -51,7 +85,10 @@ ActiveRecord::Schema.define(version: 20150328192018) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "venues", force: :cascade do |t|
-    t.string "name", null: false
+    t.string   "name",       null: false
+    t.string   "location",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
