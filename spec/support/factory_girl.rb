@@ -7,4 +7,9 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
+  factory :venue do
+    sequence(:name) { |n| "Brighton Music Hall - #{n}"}
+    location "40.77167, -73.99277"
+  end
+
 end

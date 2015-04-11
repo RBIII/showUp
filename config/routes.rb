@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   root 'shows#index'
   devise_for :users
-  
-  resources :venues, only: [:index, :show] do
-    resources :shows, only: [:index, :show]
+
+  resources :venues do
+    resources :shows
   end
 
-  resources :bands, only: [:index, :show] do
-    resources :shows, only: [:index, :show]
+  resources :bands do
+    resources :shows
   end
 end
