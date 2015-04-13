@@ -9,7 +9,18 @@ FactoryGirl.define do
 
   factory :venue do
     sequence(:name) { |n| "Brighton Music Hall - #{n}"}
-    location "40.77167, -73.99277"
+    latitude "40.77167"
+    longitude "-73.99277"
   end
 
+  factory :band do
+    name "Foo Fighters"
+  end
+
+  factory :show do
+    date "2015-04-13"
+    time "19:00:00"
+    venue
+    band
+  end
 end

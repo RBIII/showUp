@@ -1,0 +1,9 @@
+<h3><%= @venue.name %></h3>
+
+<ul>
+  <% @venue.shows.each do |show| %>
+    <li>
+      <%= show.band.name %> <%= show.date %> <%= show.time %>
+    </li>
+  <% end %>
+</ul>

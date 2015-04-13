@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413144239) do
+ActiveRecord::Schema.define(version: 20150413204022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,13 +47,15 @@ ActiveRecord::Schema.define(version: 20150413144239) do
     t.integer  "venue_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rating",     null: false
   end
 
   create_table "show_votes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "show_id"
+    t.integer  "user_id",                null: false
+    t.integer  "show_id",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "value",      default: 0, null: false
   end
 
   create_table "shows", force: :cascade do |t|

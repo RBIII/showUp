@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'any visitor views a list of all sitcoms' do
+feature 'any visitor views a list of all venues' do
   context 'as a visitor' do
 
     scenario 'visitor views a list of all venues' do

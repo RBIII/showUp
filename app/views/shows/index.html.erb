@@ -3,8 +3,8 @@
 <ul>
   <% @shows.each do |show| %>
     <li>
-      <%= Band.find_by(id: show.band_id).name %>
-      <%= Venue.find_by(id: show.venue_id).name %>
+      <%= link_to show.band.name, venue_show_path(show.venue, show) %>
+      <%= link_to show.venue.name, venue_path(show.venue) %>
       <%= show.date %>
       <%= show.time %>
     </li>
