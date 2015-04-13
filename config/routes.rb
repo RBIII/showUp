@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :venues do
-    resources :shows
+    resources :bands do
+      resources :shows
+    end
   end
 
-  resources :bands do
-    resources :shows
-  end
+  # resources :bands do
+  #   resources :shows
+  # end
 end

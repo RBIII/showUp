@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Basshows</title>
+  <title>showUp</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
   <nav class="top-bar">
     <ul class="title-area">
       <li class="name">
-        <h1><a href="/">Basshows</a></h1>
+        <h1><a href="/">ShowUp</a></h1>
       </li>
     </ul>
 
     <section class="top-bar-section">
       <ul class="right">
+        <li>
+           <%= link_to 'Venues', venues_path %>
+        </li>
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>

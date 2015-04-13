@@ -1,1 +1,12 @@
 <h1>Shows</h1>
+
+<ul>
+  <% @shows.each do |show| %>
+    <li>
+      <%= Band.find_by(id: show.band_id).name %>
+      <%= Venue.find_by(id: show.venue_id).name %>
+      <%= show.date %>
+      <%= show.time %>
+    </li>
+  <% end %>
+</ul>

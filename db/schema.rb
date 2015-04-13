@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411195857) do
+ActiveRecord::Schema.define(version: 20150413144239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150411195857) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "bands", ["name"], name: "index_bands_on_name", unique: true, using: :btree
 
   create_table "favorite_bands", force: :cascade do |t|
     t.boolean  "favorite",   null: false
@@ -86,9 +88,12 @@ ActiveRecord::Schema.define(version: 20150411195857) do
 
   create_table "venues", force: :cascade do |t|
     t.string   "name",       null: false
-    t.string   "location",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
+
+  add_index "venues", ["name"], name: "index_venues_on_name", unique: true, using: :btree
 
 end

@@ -7,20 +7,19 @@ class VenuesController < ApplicationController
   end
 
   def show
-    @venue = Venue.find(params[:id])
-    @show = Show.new
+    @bands = Band.new
   end
 
-  # def create
-  #   @venue = Venue.new(venue_params)
-  #   if @venue.save
-  #     flash[:notice] = 'Venue Successfully Created'
-  #     redirect_to @venue
-  #   else
-  #     flash[:alert] = 'Error: Venue not created'
-  #     redirect_to venues_path
-  #   end
-  # end
+  def create
+    @venue = Venue.new(venue_params)
+    if @venue.save
+      flash[:notice] = 'Venue Successfully Created'
+      redirect_to @venue
+    else
+      flash[:alert] = 'Error: Venue not created'
+      redirect_to venues_path
+    end
+  end
 
   private
   def venue_params
