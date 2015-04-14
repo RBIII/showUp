@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'a visitor views a band\'s details page' do
-
   context 'as an authroized user' do
     scenario 'I can write a review for a band' do
       user = FactoryGirl.create(:user)
