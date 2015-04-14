@@ -4,7 +4,7 @@ class DownvotesController < ApplicationController
   def create
     show = Show.find(params[:show_id])
 
-    VoteManger.new(current_user, show).downvote
-    redirect_to shows_path
+    VoteManager.new(current_user, show).downvote
+    redirect_to show_path(show)
   end
 end

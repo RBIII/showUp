@@ -1,6 +1,9 @@
 <h3><%= @show.band.name %> at <%= @show.venue.name %> </h3>
 
 <div class="show-details">
+  <%= link_to "⬆", show_upvotes_path(@show), method: :post %>
+  <%= @show.sum_of_votes %>
+  <%= link_to "⬇", show_downvotes_path(@show), method: :post %>
   <%= @show.date %>
   <%= @show.time %>
 </div>
