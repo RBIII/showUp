@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413204022) do
+ActiveRecord::Schema.define(version: 20150414162345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,14 +48,6 @@ ActiveRecord::Schema.define(version: 20150413204022) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rating",     null: false
-  end
-
-  create_table "show_votes", force: :cascade do |t|
-    t.integer  "user_id",                null: false
-    t.integer  "show_id",                null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "value",      default: 0, null: false
   end
 
   create_table "shows", force: :cascade do |t|
@@ -97,5 +89,13 @@ ActiveRecord::Schema.define(version: 20150413204022) do
   end
 
   add_index "venues", ["name"], name: "index_venues_on_name", unique: true, using: :btree
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "user_id",                null: false
+    t.integer  "show_id",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "value",      default: 0, null: false
+  end
 
 end
