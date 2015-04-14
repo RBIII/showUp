@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   resources :venues, only: [:index, :show, :create] do
     resources :shows
   end
-  
 
-  # resources :bands do
-  #   resources :shows
-  # end
+  resources :bands, only: [:index, :show]
 end

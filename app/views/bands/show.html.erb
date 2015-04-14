@@ -1,12 +1,11 @@
-<h3><%= @venue.name %></h3>
+<h3><%= @band.name %></h3>
 
 <ul>
-  <% @venue.shows.each do |show| %>
+  <% @band.shows.each do |show| %>
     <li>
-      <%= link_to show.band.name, band_path(show.band) %>
+      <%= link_to show.venue.name, venue_path(show.venue) %>
       <%= show.date %>
       <%= show.time %>
       <%= link_to "Click it for Tickets!", show.ticket_url %>
-    </li>
   <% end %>
 </ul>

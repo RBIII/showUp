@@ -14,7 +14,7 @@ FactoryGirl.define do
   end
 
   factory :band do
-    name "Foo Fighters"
+    sequence(:name) { |n| "Foo Fighters - #{n}" }
   end
 
   factory :show do
