@@ -1,1 +1,20 @@
 <h3><%= @show.band.name %> at <%= @show.venue.name %> </h3>
+
+<div class="show-details">
+  <%= @show.date %>
+  <%= @show.time %>
+</div>
+
+<%= form_for [@show, @review] do |f| %>
+  <div class= "row">
+    <div class="large-12 columns">
+      <%= f.label :body %>
+      <%= f.text_field :body %>
+
+      <%= f.label :rating %>
+      <%= f.select :rating, (1..5).to_a %>
+
+      <%= f.submit "Create review" %>
+    </div>
+  </div>
+<% end %>

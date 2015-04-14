@@ -3,8 +3,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :venues, only: [:index, :show, :create] do
-    resources :shows
+    resources :reviews, only: [:create]
   end
 
-  resources :bands, only: [:index, :show]
+  resources :shows, only: [:index, :show] do
+    resources :reviews, only: [:create]
+  end
+
+  resources :bands, only: [:index, :show] do
+    resources :reviews, only: [:create]
+  end
 end
