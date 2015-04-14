@@ -1,5 +1,18 @@
 class Review < ActiveRecord::Base
+  class UnknownReviewable < Exception; end
+
   belongs_to :user
-  belongs_to :band
-  belongs_to :venue
+  belongs_to :reviewable, polymorphic: true
+
+  def self.derive_reviewable(params)
+    if params[:venue_id]
+      Venue.find(params[:venue_id])
+    elsif params[:show_id]
+      Show.find(params[:show_id])
+    elsif params[:band_id]
+      Band.find(params[:band_id])
+    else
+      raise Review::UnknownReviewable
+    end
+  end
 end

@@ -1,15 +1,16 @@
 require 'rails_helper'
 
-feature 'a visitor views a venue\'s details page' do
+feature 'a visitor views a show\'s details page' do
+
   context 'as an authroized user' do
-    scenario 'I can write a review for a venue' do
+    scenario 'I can write a review for a show' do
       user = FactoryGirl.create(:user)
       sign_in_as(user)
 
-      venue = FactoryGirl.create(:venue)
-      visit venue_path(venue)
+      show = FactoryGirl.create(:show)
+      visit show_path(show)
 
-      fill_in 'Body', with: 'This was a dope venue!'
+      fill_in 'Body', with: 'This was a dope show!'
       select '5', from: 'Rating'
 
       click_on 'Create review'
@@ -17,11 +18,12 @@ feature 'a visitor views a venue\'s details page' do
     end
   end
 
-  context 'as any visitor' do
-    scenario 'I can view a venue\'s details page'  do
+  context 'as a visitor' do
+
+    scenario 'I can view a show\'s details page'  do
       show = FactoryGirl.create(:show)
 
-      visit venue_path(show.venue)
+      visit show_path(show)
 
       expect(page).to have_content("Foo Fighters")
       expect(page).to have_content("Brighton Music Hall")

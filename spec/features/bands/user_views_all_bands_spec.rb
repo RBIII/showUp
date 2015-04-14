@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'any visitor views a list of all venues' do
   context 'as a visitor' do
 
-    scenario 'visitor views a list of all venues' do
+    scenario 'I can view a list of all venues' do
       FactoryGirl.create(:band)
       FactoryGirl.create(:band)
       FactoryGirl.create(:band)
