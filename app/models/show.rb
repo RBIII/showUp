@@ -29,4 +29,17 @@ class Show < ActiveRecord::Base
       end
     end
   end
+
+  def self.search(query)
+    shows = []
+    bands = joins(:band).where("name ilike ?", "%#{query}%")
+    venues = joins(:venue).where("name ilike ?", "%#{query}%")
+    bands.each do |band|
+      shows << band
+    end
+
+    venues.each do |venue|
+      shows << venue
+    end
+  end
 end
