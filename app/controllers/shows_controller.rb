@@ -1,7 +1,7 @@
 class ShowsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
   def index
-    @shows = Show.all
+    @shows = Show.includes(:band, :venue)
   end
 
   def show
