@@ -8,6 +8,7 @@ class Show < ActiveRecord::Base
   validates :time, presence: true
   validates :band, presence: true
   validates :venue, presence: true
+  acts_as_taggable
 
   def sum_of_votes
     sum = 0
@@ -19,5 +20,13 @@ class Show < ActiveRecord::Base
       end
     end
     sum
+  end
+
+  def display_tags
+    unless tag_list.nil?
+      tag_list.each do |tag|
+        puts tag
+      end
+    end
   end
 end
