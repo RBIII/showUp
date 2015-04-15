@@ -1,0 +1,10 @@
+<%= form_for @show do |f| %>
+  <div class= "row">
+    <div class="large-12 columns">
+      <%= f.label :tag_list %>
+      <%= f.text_field :tag_list %>
+
+      <%= f.submit "Add tags" %>
+    </div>
+  </div>
+<% end %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
 
-  resources :shows, only: [:index, :show] do
+  resources :shows, only: [:index, :show, :edit, :update] do
     resources :reviews, only: [:create]
     resources :upvotes, only: [:create]
     resources :downvotes, only: [:create]

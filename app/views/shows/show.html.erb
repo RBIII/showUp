@@ -8,6 +8,11 @@
   <%= @show.time %>
 </div>
 
+<div class="tags">
+  <%= @show.display_tags %>
+</div>
+  <%= link_to "Add tags", edit_show_path(@show) %>
+
 <%= form_for [@show, @review] do |f| %>
   <div class= "row">
     <div class="large-12 columns">
