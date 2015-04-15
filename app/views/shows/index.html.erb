@@ -3,10 +3,14 @@
 <ul>
   <% @shows.each do |show| %>
     <li>
+      <%= link_to "⬆", show_upvotes_path(show), method: :post %>
+      <%= show.sum_of_votes %>
+      <%= link_to "⬇", show_downvotes_path(show), method: :post %>
       <%= link_to show.band.name, show_path(show) %>
       <%= link_to show.venue.name, venue_path(show.venue) %>
       <%= show.date %>
       <%= show.time %>
+      <%= show.display_tags %>
     </li>
   <% end %>
 </ul>
