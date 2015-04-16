@@ -41,5 +41,8 @@ class Show < ActiveRecord::Base
     venues.each do |venue|
       shows << venue
     end
+    shows
   end
+
+  
 end
