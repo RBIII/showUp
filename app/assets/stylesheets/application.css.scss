@@ -101,6 +101,7 @@ input#front-search-button {
 }
 
 .venue-name {
+  width: 85%;
   text-align: center;
 }
 
@@ -134,4 +135,8 @@ input#front-search-button {
 .upcoming-header {
   text-align: center;
   color: white !important;
+}
+
+.tag {
+  color: blue;
 }
