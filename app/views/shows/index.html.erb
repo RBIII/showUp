@@ -14,7 +14,7 @@
   <div class="page-content">
     <div class="newest-shows panel">
       <h3 class="newest-header">Newest</h3>
-      <% @shows.each do |show| %>
+      <% @newest_shows.each do |show| %>
         <div class="show-details panel">
           <div class="ticket-url">
             <%= link_to "Tickets", show.ticket_url %>
@@ -42,7 +42,7 @@
 
     <div class="hot-shows panel">
       <h3 class="hot-header">Hot</h3>
-      <% @shows.each do |show| %>
+      <% @hot_shows.each do |show| %>
         <div class="show-details panel">
           <div class="ticket-url">
             <%= link_to "Tickets", show.ticket_url %>
@@ -70,7 +70,7 @@
 
     <div class="upcoming-shows panel">
       <h3 class="upcoming-header">Upcoming</h3>
-      <% @shows.each do |show| %>
+      <% @upcoming_shows.each do |show| %>
         <div class="show-details panel">
           <div class="ticket-url">
             <%= link_to "Tickets", show.ticket_url %>
