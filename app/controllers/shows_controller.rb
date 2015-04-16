@@ -4,7 +4,7 @@ class ShowsController < ApplicationController
     if params[:search]
       @shows = Show.search(params[:search])
     else
-      @shows = Show.includes(:band, :venue)
+      @shows = Show.includes(:band, :venue, :votes, :taggings, :tags )
     end
   end
 

@@ -1,16 +1,99 @@
-<h1>Shows</h1>
+<body>
 
-<ul>
-  <% @shows.each do |show| %>
-    <li>
-      <%= link_to "⬆", show_upvotes_path(show), method: :post %>
-      <%= show.sum_of_votes %>
-      <%= link_to "⬇", show_downvotes_path(show), method: :post %>
-      <%= link_to show.band.name, show_path(show) %>
-      <%= link_to show.venue.name, venue_path(show.venue) %>
-      <%= show.date %>
-      <%= show.time %>
-      <%= show.display_tags %>
-    </li>
-  <% end %>
-</ul>
+    <nav>
+      <section class="search-section">
+        <div class="front-search">
+          <form action="<%= shows_path %>" method="GET">
+            <input id="front-search-bar" type="text" name="search" value="">
+            <input id="front-search-button" type="submit" value="Search" class="button">
+          </form>
+        </div>
+      </section>
+    </nav>
+
+  <div class="page-content">
+    <div class="newest-shows panel">
+      <h3 class="newest-header">Newest</h3>
+      <% @shows.each do |show| %>
+        <div class="show-details panel">
+          <div class="ticket-url">
+            <%= link_to "Tickets", show.ticket_url %>
+          </div>
+          <div class="votes">
+              <%= link_to "⬆", show_upvotes_path(show), method: :post %>
+              <br>
+              <%= show.sum_of_votes %>
+              <br>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post %>
+          </div class="band-and-venue">
+          <div class="band-and-venue">
+              <h4 class="band-name"><%= link_to show.band.name, show_path(show) %></h4>
+              <h4 class="venue-name"><%= link_to show.venue.name, venue_path(show.venue) %></h4>
+          </div>
+            <div class="date-time">
+              <%= show.date %> at <%= show.time %>
+            </div>
+            <div class="tags">
+              <%= show.display_tags %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="hot-shows panel">
+      <h3 class="hot-header">Hot</h3>
+      <% @shows.each do |show| %>
+        <div class="show-details panel">
+          <div class="ticket-url">
+            <%= link_to "Tickets", show.ticket_url %>
+          </div>
+          <div class="votes">
+              <%= link_to "⬆", show_upvotes_path(show), method: :post %>
+              <br>
+              <%= show.sum_of_votes %>
+              <br>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post %>
+          </div>
+            <div class="band-and-venue">
+              <h4 class="band-name"><%= link_to show.band.name, show_path(show) %></h4>
+              <h4 class="venue-name"><%= link_to show.venue.name, venue_path(show.venue) %></h4>
+            </div>
+            <div class="date-time">
+              <%= show.date %> at <%= show.time %>
+            </div>
+            <div class="tags">
+              <%= show.display_tags %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="upcoming-shows panel">
+      <h3 class="upcoming-header">Upcoming</h3>
+      <% @shows.each do |show| %>
+        <div class="show-details panel">
+          <div class="ticket-url">
+            <%= link_to "Tickets", show.ticket_url %>
+          </div>
+          <div class="votes">
+              <%= link_to "⬆", show_upvotes_path(show), method: :post %>
+              <br>
+              <%= show.sum_of_votes %>
+              <br>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post %>
+          </div>
+            <div class="band-and-venue">
+              <h4 class="band-name"><%= link_to show.band.name, show_path(show) %></h4>
+              <h4 class="venue-name"><%= link_to show.venue.name, venue_path(show.venue) %></h4>
+            </div>
+            <div class="date-time">
+              <%= show.date %> at <%= show.time %>
+            </div>
+            <div class="tags">
+              <%= show.display_tags %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</body>

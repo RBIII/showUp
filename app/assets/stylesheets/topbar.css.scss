@@ -1,0 +1,15 @@
+.search {
+  width: 20%;
+}
+
+input#searchBar {
+  float: left;
+  width: 50%;
+}
+
+input#searchButton {
+  margin-left: 0.5em;
+  position: relative;
+  transform: translateY(-35%);
+  font-family: 'Karla', sans-serif;
+}
