@@ -1,28 +1,52 @@
-<h3><%= @show.band.name %> at <%= @show.venue.name %> </h3>
-
-<div class="show-details">
-  <%= link_to "⬆", show_upvotes_path(@show), method: :post %>
-  <%= @show.sum_of_votes %>
-  <%= link_to "⬇", show_downvotes_path(@show), method: :post %>
-  <%= @show.date %>
-  <%= @show.time %>
-</div>
-
-<div class="tags">
-  <%= @show.display_tags %>
-</div>
-  <%= link_to "Add tags", edit_show_path(@show) %>
-
-<%= form_for [@show, @review] do |f| %>
-  <div class= "row">
-    <div class="large-12 columns">
-      <%= f.label :body %>
-      <%= f.text_field :body %>
-
-      <%= f.label :rating %>
-      <%= f.select :rating, (1..5).to_a %>
-
-      <%= f.submit "Create review" %>
+<body>
+  <div class="show-header panel">
+    <div class="show-votes">
+      <%= link_to "⬆", show_upvotes_path(@show), method: :post %>
+      <%= @show.sum_of_votes %>
+      <%= link_to "⬇", show_downvotes_path(@show), method: :post %>
     </div>
+    <h3 class="show-header-text"><%= @show.band.name %> at <%= @show.venue.name %> </h3>
   </div>
-<% end %>
+
+  <div class="show-details panel">
+    <ul>
+      <li><%= image_tag(@show.image_url) %></li>
+      <li><%= @show.venue.longitude %></li>
+      <li><%= @show.venue.latitude %></li>
+      <li>Average price: $<%= @show.avg_price %></li>
+      <li>Date: <%= @show.date %></li>
+      <li>Time: <%= @show.time %></li>
+    </ul>
+    <div class="tags">
+      Tags: <%= @show.display_tags %>
+    </div>
+    <%= link_to "Add tags", edit_show_path(@show) %>
+  </div>
+
+  <div class= "review-form">
+    <%= form_for [@show, @review] do |f| %>
+      <div class= "row">
+        <div class="large-12 columns">
+          <%= f.label :body %>
+          <%= f.text_field :body %>
+
+          <%= f.label :rating %>
+          <%= f.select :rating, (1..5).to_a %>
+
+          <%= f.submit "Create review" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="reviews panel">
+    <% @show.reviews.each do |review| %>
+      <div class="review panel">
+        <%= review.rating %>
+        <%= review.body %>
+      </div>
+    <% end %>
+
+  </div>
+
+</body>

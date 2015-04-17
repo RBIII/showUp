@@ -4,6 +4,8 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :reviewable, polymorphic: true
 
+  validates :body, presence: true
+
   def self.derive_reviewable(params)
     if params[:venue_id]
       Venue.find(params[:venue_id])
