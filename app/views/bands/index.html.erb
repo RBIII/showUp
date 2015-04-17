@@ -1,7 +1,9 @@
-<h3>Bands</h3>
-
-<ul>
-  <% @bands.each do |band| %>
-    <li><%= link_to band.name, band_path(band) %></li>
-  <% end %>
-</ul>
+<body>
+  <div class="bands panel">
+    <% @bands.each do |band| %>
+      <div class="band panel">
+        <%= link_to band.name, band_path(band) %>
+      </div>
+    <% end %>
+  </div>
+</body>

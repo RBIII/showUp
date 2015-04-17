@@ -59,6 +59,33 @@
   float: left;
 }
 
+
+.show-header
+{
+  width: 80%;
+  margin: 3% auto;
+  background: {
+    color: #170563;
+  }
+  text-align: center;
+}
+
+.show-votes {
+  color: white;
+  float: left;
+}
+
+h3.show-header-text {
+  color: white;
+}
+
+.show-details {
+  width: 25%;
+  text-align: center;
+  float: left;
+  margin-left: 1%;
+}
+
 .page-content
 {
   width: 90%;
@@ -88,7 +115,7 @@ input#front-search-button {
   text-align: center;
 }
 
-.show-details {
+.shows-details {
   margin: 1%;
 }
 
@@ -101,6 +128,7 @@ input#front-search-button {
 }
 
 .venue-name {
+  width: 85%;
   text-align: center;
 }
 
@@ -134,4 +162,47 @@ input#front-search-button {
 .upcoming-header {
   text-align: center;
   color: white !important;
+}
+
+.tag {
+  color: blue;
+}
+
+.venues {
+  width: 60%;
+  background: {
+    color: #170563;
+  }
+  margin: 8% auto;
+  opacity: .94;
+  text-align: center;
+}
+
+.bands {
+  width: 60%;
+  background: {
+    color: #170563;
+  }
+  margin: 8% auto;
+  opacity: .94;
+  text-align: center;
+}
+
+.review-form {
+  float: left;
+  width: 60%;
+}
+
+.reviews {
+  float: left;
+  width: 60%;
+  margin-left: 1%;
+  margin-top: 3%;
+  background: {
+    color: #170563;
+  }
+}
+
+.review {
+
 }

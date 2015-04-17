@@ -1,8 +1,9 @@
-<h1> Venues </h1>
-
-
-<ul>
-  <% @venues.each do |venue| %>
-    <li><%= link_to venue.name, venue_path(venue) %></li>
-  <% end %>
-</ul>
+<body>
+  <div class="venues panel">
+    <% @venues.each do |venue| %>
+      <div class="venue panel">
+        <%= link_to venue.name, venue_path(venue) %>
+      </div>
+    <% end %>
+  </div>
+</body>

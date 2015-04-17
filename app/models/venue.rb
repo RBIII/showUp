@@ -6,4 +6,15 @@ class Venue < ActiveRecord::Base
    validates :name, presence: true
    validates :latitude, presence: true
    validates :longitude, presence: true
+
+  def average_rating
+    if reviews.empty?
+      0
+    else
+      avg_rating = 0
+      reviews.each do |review|
+        avg_rating += review.rating
+      end
+    end
+  end
 end
