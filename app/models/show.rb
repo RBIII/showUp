@@ -44,5 +44,26 @@ class Show < ActiveRecord::Base
     shows
   end
 
-  
+  def self.newest_shows
+    order(created_at: :desc).limit(15)
+  end
+
+  def self.hot_shows
+    hot_shows = all.sort_by do |show|
+      if !(show.votes.where({created_at: (Time.now.midnight-1.day)..Time.now.midnight}).empty?)
+        sum = 0
+        show.votes.where({created_at: (Time.now.midnight-1.day)..Time.now.midnight}).each do |vote|
+          sum += vote.value
+        end
+        sum
+      else
+        0
+      end
+    end
+    hot_shows.take(15)
+  end
+
+  def self.upcoming_shows
+    order(date: :asc).limit(15)
+  end
 end
