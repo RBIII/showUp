@@ -10,7 +10,9 @@
 
   <div class="shows-details panel">
     <ul>
-      <li><%= image_tag(@show.image_url) %></li>
+      <% unless @artists_tracks %>
+        <li><%= image_tag(@artists_tracks.first.album.images.first["url"]) %></li>
+      <% end %>
       <li><%= @show.venue.longitude %></li>
       <li><%= @show.venue.latitude %></li>
       <li>Average price: $<%= @show.avg_price %></li>
@@ -21,6 +23,19 @@
       Tags: <%= @show.display_tags %>
     </div>
     <%= link_to "Add tags", edit_show_path(@show) %>
+  </div>
+
+  <div class="artists-tracks panel">
+    <% unless @artists_tracks %>
+      <h3>Top Tracks</h3>
+      <% @artists_tracks.each do |track| %>
+        <div class="panel">
+          <h4><%= track.name %> - <%=link_to "Preview", track.preview_url %></h4>
+        </div>
+      <% end %>
+    <% else %>
+      <h3>No tracks to display</h3>
+    <% end %>
   </div>
 
   <div class= "review-form">
@@ -46,7 +61,6 @@
         <%= review.body %>
       </div>
     <% end %>
-
   </div>
 
 </body>
