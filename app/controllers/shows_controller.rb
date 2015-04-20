@@ -13,6 +13,7 @@ class ShowsController < ApplicationController
 
   def show
     @show = Show.find(params[:id])
+    @artists_tracks = RSpotify::Artist.search(@show.band.name).first.top_tracks(:US).sort_by { |track| track.popularity }.reverse.take(5)
     @review = Review.new
   end
 

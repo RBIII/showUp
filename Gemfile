@@ -55,3 +55,4 @@ gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
 gem 'foundation-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'rspotify'
