@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   resources :bands, only: [:index, :show] do
     resources :reviews, only: [:create]
   end
+
+  resources :searches, only: [:index]
+
 end

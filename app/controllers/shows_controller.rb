@@ -1,19 +1,15 @@
 class ShowsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
   def index
-    if params[:search]
-      @shows = Show.search(params[:search])
-    else
       @shows = Show.includes(:band, :venue, :votes)
       @newest_shows = Show.newest_shows.includes(:band, :venue, :votes)
       @hot_shows = Show.hot_shows
       @upcoming_shows = Show.upcoming_shows.includes(:band, :venue, :votes)
-    end
   end
 
   def show
     @show = Show.find(params[:id])
-    if !(@artists_tracks = RSpotify::Artist.search(@show.band.name).first.nil?)
+    if @artists_tracks = RSpotify::Artist.search(@show.band.name).first
       @artists_tracks = RSpotify::Artist.search(@show.band.name).first.top_tracks(:US).sort_by { |track| track.popularity }.reverse.take(5)
     end
     @review = Review.new
