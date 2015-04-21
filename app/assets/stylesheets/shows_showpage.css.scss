@@ -1,0 +1,60 @@
+.show-header
+{
+  width: 80%;
+  margin: 3% auto;
+  background: {
+    color: #170563;
+  }
+  text-align: center;
+}
+
+.show-votes {
+  color: white;
+  float: left;
+}
+
+h3.show-header-text {
+  color: white;
+}
+
+.shows-details {
+  width: 25%;
+  text-align: center;
+  margin-left: 1%;
+  float: left;
+}
+
+.reviews-header {
+  color: white !important;
+}
+
+.review-form {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 12%;
+}
+
+.reviews {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 3%;
+  background: {
+    color: #170563;
+  }
+}
+
+.artists-tracks {
+  background: {
+    color: #170563;
+  }
+  margin-left: 30%;
+}
+
+.tracks-header {
+  text-align: center;
+  color: white !important;
+}
+
+.preview {
+  float: right;
+}

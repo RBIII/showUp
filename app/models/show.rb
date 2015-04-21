@@ -34,6 +34,7 @@ class Show < ActiveRecord::Base
     shows = []
     bands = joins(:band).where("name ilike ?", "%#{query}%")
     venues = joins(:venue).where("name ilike ?", "%#{query}%")
+    tags = Show.tagged_with("#{query}", any: true)
     bands.each do |band|
       shows << band
     end
@@ -41,11 +42,16 @@ class Show < ActiveRecord::Base
     venues.each do |venue|
       shows << venue
     end
+
+    tags.each do |tag|
+      shows << tag
+    end
+
     shows
   end
 
   def self.newest_shows
-    order(created_at: :desc).limit(15)
+    order(created_at: :desc).limit(5)
   end
 
   def self.hot_shows
@@ -60,10 +66,10 @@ class Show < ActiveRecord::Base
         0
       end
     end
-    hot_shows.take(15)
+    hot_shows.take(5)
   end
 
   def self.upcoming_shows
-    order(date: :asc).limit(15)
+    order(date: :asc).limit(5)
   end
 end

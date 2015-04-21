@@ -1,0 +1,111 @@
+.newest-shows
+{
+  width: 30%;
+  background: {
+    color: #170563;
+  }
+  opacity: .94;
+  margin-left: 3%;
+  float: left;
+}
+
+.hot-shows
+{
+  width: 30%;
+  background: {
+    color: #170563;
+  }
+  margin-left: 2%;
+  opacity: .94;
+  float: left;
+}
+
+.upcoming-shows
+{
+  width: 30%;
+  background: {
+    color: #170563;
+  }
+  margin-left: 2%;
+  opacity: .94;
+  float: left;
+}
+
+.page-content
+{
+  width: 90%;
+  margin: 5% auto;
+}
+
+.front-search {
+  display: inline-block;
+  width: 50%;
+  margin-top: 2%;
+}
+
+input#front-search-bar {
+  float: left;
+  width: 60%;
+  margin-left: 100px;
+}
+
+input#front-search-button {
+  float: left;
+  position: relative;
+  transform: translateY(-2%);
+  text-align: center;
+}
+
+.search-section {
+  text-align: center;
+  margin-bottom: 10%
+}
+
+.band-and-venue {
+  text-align: center;
+}
+
+.band-name {
+  text-align: center;
+}
+
+.venue-name {
+  width: 85%;
+  text-align: center;
+}
+
+.date-time {
+  text-align: center;
+}
+
+.votes {
+  float: left;
+  text-align: center;
+}
+
+.ticket-url {
+  float: right;
+}
+
+.header {
+  color: white;
+}
+
+.newest-header {
+  text-align: center;
+  color: white !important;
+}
+
+.hot-header {
+  text-align: center;
+  color: white !important;
+}
+
+.upcoming-header {
+  text-align: center;
+  color: white !important;
+}
+
+.tag {
+  color: blue;
+}
