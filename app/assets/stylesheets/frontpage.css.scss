@@ -6,7 +6,6 @@
   }
   opacity: .94;
   margin-left: 3%;
-  float: left;
 }
 
 .hot-shows
@@ -17,7 +16,6 @@
   }
   margin-left: 2%;
   opacity: .94;
-  float: left;
 }
 
 .upcoming-shows
@@ -28,25 +26,45 @@
   }
   margin-left: 2%;
   opacity: .94;
-  float: left;
 }
 
 .page-content
 {
-  width: 90%;
-  margin: 5% auto;
+  padding-top: 1%;
+  background-color: #cccccc;
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 2%;
+}
+
+.all-shows-background {
+  padding-top: 2%;
+  border-top: 2px solid black;
+  background-color: #1F3A85;
+}
+
+.all-shows {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.all-shows-header {
+  text-align: center;
 }
 
 .front-search {
   display: inline-block;
-  width: 50%;
+  width: 60%;
   margin-top: 2%;
 }
 
 input#front-search-bar {
   float: left;
-  width: 60%;
-  margin-left: 100px;
+  width: 50%;
+  margin-left: 18%;
+  padding-top: 1.3rem;
+  padding-bottom: 1.7rem;
+  font-size: 30px;
 }
 
 input#front-search-button {
@@ -57,8 +75,14 @@ input#front-search-button {
 }
 
 .search-section {
+  background: {
+       image: asset-url("concert.jpg");
+     }
+  padding-top: 20%;
+  padding-bottom: 20%;
   text-align: center;
-  margin-bottom: 10%
+  margin-bottom: 1%;
+  border-bottom: 2px solid black;
 }
 
 .band-and-venue {
@@ -76,6 +100,7 @@ input#front-search-button {
 
 .date-time {
   text-align: center;
+  margin-right: 5%;
 }
 
 .votes {
@@ -107,5 +132,9 @@ input#front-search-button {
 }
 
 .tag {
-  color: blue;
+  background: blue;
+}
+
+.all-shows-venue-name {
+  margin-right: 5%;
 }

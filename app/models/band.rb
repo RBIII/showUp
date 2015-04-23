@@ -4,6 +4,7 @@ class Band < ActiveRecord::Base
   has_many :reviews, as: :reviewable
 
   validates :name, presence: true
+  paginates_per 15
 
   def average_rating
     if reviews.empty?
@@ -13,6 +14,14 @@ class Band < ActiveRecord::Base
       reviews.each do |review|
         avg_rating += review.rating
       end
+    end
+  end
+
+  def display_name
+    if name.length > 9
+      name[0..8] + "..."
+    else
+      name
     end
   end
 end

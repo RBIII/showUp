@@ -1,26 +1,28 @@
-<h3><%= @venue.name %></h3>
+<body>
+  <h3 class="venue-header panel"><%= @venue.name %></h3>
 
-<ul>
-  <% @venue.shows.each do |show| %>
-    <li>
-      <%= link_to show.band.name, band_path(show.band) %>
-      <%= show.date %>
-      <%= show.time %>
-      <%= link_to "Click it for Tickets!", show.ticket_url %>
-    </li>
-  <% end %>
-</ul>
-
-<%= form_for [@venue, @review] do |f| %>
-  <div class= "row">
-    <div class="large-12 columns">
-      <%= f.label :body %>
-      <%= f.text_field :body %>
-
-      <%= f.label :rating %>
-      <%= f.select :rating, (1..5).to_a %>
-
-      <%= f.submit "Create review" %>
-    </div>
+  <div class="row panel">
+    <% @venue.shows.each do |show| %>
+      <ul class="panel">
+        <li><%= link_to show.band.name, band_path(show.band) %></li>
+        <li><%= show.date %></li>
+        <li><%= show.time %></li>
+        <li><%= link_to "Tickets", show.ticket_url %></li>
+      </ul>
+    <% end %>
   </div>
-<% end %>
+
+  <%= form_for [@venue, @review] do |f| %>
+    <div class= "row">
+      <div>
+        <%= f.label :body %>
+        <%= f.text_field :body %>
+
+        <%= f.label :rating %>
+        <%= f.select :rating, (1..5).to_a %>
+
+        <%= f.submit "Create review" %>
+      </div>
+    </div>
+  <% end %>
+</body>

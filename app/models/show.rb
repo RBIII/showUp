@@ -9,6 +9,8 @@ class Show < ActiveRecord::Base
   validates :band, presence: true
   validates :venue, presence: true
   acts_as_taggable
+  paginates_per 10
+
 
   def sum_of_votes
     sum = 0
@@ -16,6 +18,18 @@ class Show < ActiveRecord::Base
       0
     else
       votes.each do |vote|
+        sum += vote.value
+      end
+    end
+    sum
+  end
+
+  def sum_hot_votes
+    sum = 0
+    if votes.empty?
+      0
+    else
+      votes.where({created_at: (Time.now.midnight-1.day)..Time.now.midnight}).each do |vote|
         sum += vote.value
       end
     end
@@ -55,21 +69,26 @@ class Show < ActiveRecord::Base
   end
 
   def self.hot_shows
-    hot_shows = all.sort_by do |show|
-      if !(show.votes.where({created_at: (Time.now.midnight-1.day)..Time.now.midnight}).empty?)
-        sum = 0
-        show.votes.where({created_at: (Time.now.midnight-1.day)..Time.now.midnight}).each do |vote|
-          sum += vote.value
-        end
-        sum
-      else
-        0
+    hot_shows = []
+
+    all.each do |show|
+      if show.votes.where({created_at: (Time.now.midnight-1.day)..Time.now.midnight})
+        hot_shows << show
       end
     end
-    hot_shows.take(5)
+
+    hot_shows.sort_by do |show|
+      show.sum_hot_votes
+    end
+
+    hot_shows.reverse.take(5)
   end
 
   def self.upcoming_shows
     order(date: :asc).limit(5)
+  end
+
+  def self.cheapest
+    order()
   end
 end

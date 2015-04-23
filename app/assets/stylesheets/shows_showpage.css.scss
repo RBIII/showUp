@@ -1,3 +1,8 @@
+.center-page {
+  background: black;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
 .show-header
 {
   width: 80%;
@@ -31,7 +36,8 @@ h3.show-header-text {
 .review-form {
   width: 70%;
   margin: 0 auto;
-  margin-top: 12%;
+  margin-top: 5%;
+  border: 1px solid black;
 }
 
 .reviews {
