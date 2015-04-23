@@ -5,8 +5,10 @@
     <ul>
       <% if @artists_tracks %>
         <li><%= image_tag(@artists_tracks.first.album.images.first["url"]) %></li>
-      <% else %>
+      <% elsif @band.shows.first %>
         <li><%= image_tag(@band.shows.first.image_url) %></li>
+      <% else %>
+        <li>No Image provided</li>
       <% end %>
       <% @band.shows.each do |show| %>
         <div>
