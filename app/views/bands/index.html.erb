@@ -1,9 +1,9 @@
-<body>
+
   <div class="bands panel">
     <% @bands.each do |band| %>
       <div class="band panel">
         <%= link_to band.name, band_path(band) %>
       </div>
     <% end %>
+  <%= paginate @bands %>
   </div>
-</body>

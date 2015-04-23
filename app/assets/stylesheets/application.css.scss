@@ -17,10 +17,13 @@
  */
 
  body {
-  background: {
-       image: asset-url("concert.jpg");
-     }
+  background-color: #eeeeee;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+ }
+
+ ul
+ {
+ list-style-type: none;
  }

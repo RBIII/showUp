@@ -1,7 +1,9 @@
 <h2>Your Search Results:</h2>
-<ul>
+<ul class="panel">
   <% @shows.each do |show| %>
-    <li><%= link_to show.band.name, show_path(show) %></li>
-    <li><%= link_to show.venue.name, venue_path(show.venue) %></li>
+    <div class="panel">
+      <li><%= link_to show.band.name, show_path(show) %></li>
+      <li><%= link_to show.venue.name, venue_path(show.venue) %></li>
+    </div>
   <% end %>
 </ul>

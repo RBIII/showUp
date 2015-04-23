@@ -7,6 +7,7 @@
     </div>
     <h3 class="show-header-text"><%= @show.band.name %> at <%= @show.venue.name %> </h3>
   </div>
+
   <div class="center-page">
     <div class="shows-details panel">
       <ul>
@@ -25,20 +26,20 @@
       </div>
       <%= link_to "Add tags", edit_show_path(@show) %>
     </div>
-  </div>
 
-  <div class="artists-tracks panel">
-    <% if @artists_tracks %>
-      <h3 class="tracks-header">Top Tracks</h3>
-      <% @artists_tracks.each do |track| %>
-        <div class="panel">
-          <p class="preview"><%=link_to "Preview", track.preview_url %></p>
-          <h4 class="track-info "><%= track.name %> - <%= track.album.name %></h4>
-        </div>
+    <div class="artists-tracks panel">
+      <% if @artists_tracks %>
+        <h3 class="tracks-header">Top Tracks</h3>
+        <% @artists_tracks.each do |track| %>
+          <div class="panel">
+            <p class="preview"><%=link_to "Preview", track.preview_url %></p>
+            <h4 class="track-info "><%= track.name %> - <%= track.album.name %></h4>
+          </div>
+        <% end %>
+      <% else %>
+        <h3 class="tracks-header">No tracks to display</h3>
       <% end %>
-    <% else %>
-      <h3 class="tracks-header">No tracks to display</h3>
-    <% end %>
+    </div>
   </div>
 
   <div class= "review-form panel">
