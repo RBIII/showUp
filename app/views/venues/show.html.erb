@@ -1,5 +1,6 @@
 <body>
   <h3 class="venue-header panel"><%= @venue.name %></h3>
+  <div id='map'></div>
   <div class="venue-shows">
     <div class="row panel">
       <% @venue.shows.each do |show| %>
