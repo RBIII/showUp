@@ -1,9 +1,18 @@
 <body>
+
   <div class="show-header panel">
     <div class="show-votes">
-      <%= link_to "⬆", show_upvotes_path(@show), method: :post %>
+      <% if @show.user_upvoted?(current_user) %>
+        <%= link_to "⬆", show_upvotes_path(@show), method: :post, :class => "upvote" %>
+      <% else %>
+        <%= link_to "⬆", show_upvotes_path(@show), method: :post %>
+      <% end %>
       <%= @show.sum_of_votes %>
-      <%= link_to "⬇", show_downvotes_path(@show), method: :post %>
+      <% if @show.user_downvoted?(current_user) %>
+        <%= link_to "⬇", show_downvotes_path(@show), method: :post, :class => "downvote" %>
+      <% else %>
+        <%= link_to "⬇", show_downvotes_path(@show), method: :post %>
+      <% end %>
     </div>
     <h3 class="show-header-text"><%= @show.band.name %> at <%= @show.venue.name %> </h3>
   </div>
@@ -60,8 +69,8 @@
     <h4 class="reviews-header">Reviews</h4>
     <% @show.reviews.each do |review| %>
       <div class="review panel">
-        <%= review.rating %>
-        <%= review.body %>
+        <h3><%= review.user.email %> - <%= review.rating %></h3>
+        <p><%= review.body %><p>
       </div>
     <% end %>
   </div>

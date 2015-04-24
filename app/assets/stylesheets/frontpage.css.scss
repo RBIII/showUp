@@ -1,31 +1,32 @@
 .newest-shows
 {
-  width: 30%;
   background: {
     color: #170563;
   }
   opacity: .94;
-  margin-left: 3%;
+  margin-left: .5%;
+  margin-right: .5%;
 }
 
 .hot-shows
 {
-  width: 30%;
   background: {
     color: #170563;
   }
-  margin-left: 2%;
   opacity: .94;
+  margin-left: .5%;
+  margin-right: .5%;
 }
 
 .upcoming-shows
 {
-  width: 30%;
   background: {
     color: #170563;
   }
-  margin-left: 2%;
   opacity: .94;
+  margin-left: .5%;
+  margin-right: .5%;
+
 }
 
 .page-content
@@ -41,6 +42,7 @@
   padding-top: 2%;
   border-top: 2px solid black;
   background-color: #1F3A85;
+  border-bottom: 1px solid black;
 }
 
 .all-shows {
@@ -96,6 +98,7 @@ input#front-search-button {
 .venue-name {
   width: 85%;
   text-align: center;
+  margin-left: 8%;
 }
 
 .date-time {
@@ -137,4 +140,8 @@ input#front-search-button {
 
 .all-shows-venue-name {
   margin-right: 5%;
+}
+
+.pagination {
+  text-align: center;
 }

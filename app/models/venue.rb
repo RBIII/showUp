@@ -20,8 +20,8 @@ class Venue < ActiveRecord::Base
   end
 
   def display_name
-    if name.length > 9
-      name[0..8] + "..."
+    if name.length > 18
+      name[0..17] + "..."
     else
       name
     end

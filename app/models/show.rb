@@ -88,7 +88,25 @@ class Show < ActiveRecord::Base
     order(date: :asc).limit(5)
   end
 
-  def self.cheapest
-    order()
+  def self.cheapest_shows
+    order(avg_price: :asc).limit(5)
+  end
+
+  def user_upvoted?(user)
+    if !(user.nil?)
+      vote = votes.find_by(user_id: user.id)
+      if !(vote.nil?)
+        vote.value == 1
+      end
+    end
+  end
+
+  def user_downvoted?(user)
+    if !(user.nil?)
+      vote = votes.find_by(user_id: user.id)
+      if !(vote.nil?)
+        vote.value == -1
+      end
+    end
   end
 end

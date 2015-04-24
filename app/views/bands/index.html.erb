@@ -1,9 +1,14 @@
-
-  <div class="bands panel">
-    <% @bands.each do |band| %>
-      <div class="band panel">
-        <%= link_to band.name, band_path(band) %>
+<body>
+  <div class="bands-index">
+    <div class="bands panel">
+      <% @bands.each do |band| %>
+        <div class="band panel">
+          <%= link_to band.name, band_path(band) %>
+        </div>
+      <% end %>
+      <div class="pagination">
+        <%= paginate @bands %>
       </div>
-    <% end %>
-  <%= paginate @bands %>
+    </div>
   </div>
+</body>

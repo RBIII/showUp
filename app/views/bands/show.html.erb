@@ -1,38 +1,41 @@
 <body>
   <h3 class="band-header panel"><%= @band.name %></h3>
 
-  <div class="band-shows-info panel">
-    <ul>
-      <% if @artists_tracks %>
-        <li><%= image_tag(@artists_tracks.first.album.images.first["url"]) %></li>
-      <% elsif @band.shows.first %>
-        <li><%= image_tag(@band.shows.first.image_url) %></li>
-      <% else %>
-        <li>No Image provided</li>
-      <% end %>
-      <% @band.shows.each do |show| %>
-        <div>
-          <li><%= link_to show.venue.name, venue_path(show.venue) %></li>
-          <li><%= show.date %></li>
-          <li><%= show.time %></li>
-          <li><%= link_to "Tickets", show.ticket_url %></li>
-        </div>
-      <% end %>
-    </ul>
-  </div>
+  <div class="center-page">
+    <div class="band-shows-info panel">
+      <h3>Upcoming Shows</h3>
+      <ul>
+        <% if @artists_tracks %>
+          <li><%= image_tag(@artists_tracks.first.album.images.first["url"]) %></li>
+        <% elsif @band.shows.first %>
+          <li><%= image_tag(@band.shows.first.image_url) %></li>
+        <% else %>
+          <li>No Image provided</li>
+        <% end %>
+        <% @band.shows.each do |show| %>
+          <div>
+            <li><%= link_to show.venue.name, venue_path(show.venue) %></li>
+            <li><%= show.date %></li>
+            <li><%= show.time %></li>
+            <li><%= link_to "Tickets", show.ticket_url %></li>
+          </div>
+        <% end %>
+      </ul>
+    </div>
 
-  <div class="artists-tracks panel">
-    <% if @artists_tracks %>
-      <h3 class="tracks-header">Top Tracks</h3>
-      <% @artists_tracks.each do |track| %>
-        <div class="panel">
-          <p class="preview"><%=link_to "Preview", track.preview_url %></p>
-          <h4 class="track-info "><%= track.name %> - <%= track.album.name %></h4>
-        </div>
+    <div class="artists-tracks panel">
+      <% if @artists_tracks %>
+        <h3 class="tracks-header">Top Tracks</h3>
+        <% @artists_tracks.each do |track| %>
+          <div class="panel">
+            <p class="preview"><%=link_to "Preview", track.preview_url %></p>
+            <h4 class="track-info "><%= track.name %> - <%= track.album.name %></h4>
+          </div>
+        <% end %>
+      <% else %>
+        <h3 class="tracks-header">No tracks to display</h3>
       <% end %>
-    <% else %>
-      <h3 class="tracks-header">No tracks to display</h3>
-    <% end %>
+    </div>
   </div>
 
   <div class= "review-form panel">
@@ -53,8 +56,8 @@
     <h4 class="reviews-header">Reviews</h4>
     <% @band.reviews.each do |review| %>
       <div class="review panel">
-        <%= review.rating %>
-        <%= review.body %>
+        <h4><%= review.user.email %> - <%= review.rating %></h4>
+        <p><%= review.body %></p>
       </div>
     <% end %>
   </div>
