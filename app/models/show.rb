@@ -72,7 +72,7 @@ class Show < ActiveRecord::Base
     hot_shows = []
 
     all.each do |show|
-      if show.votes.where({created_at: (Time.now.midnight-1.day)..Time.now.midnight})
+      if !(show.votes.where({created_at: (Time.now.midnight-1.day)..Time.now}).empty?)
         hot_shows << show
       end
     end
@@ -81,7 +81,7 @@ class Show < ActiveRecord::Base
       show.sum_hot_votes
     end
 
-    hot_shows.reverse.take(5)
+    hot_shows.take(5)
   end
 
   def self.upcoming_shows
