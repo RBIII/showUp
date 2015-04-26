@@ -14,12 +14,13 @@ class Band < ActiveRecord::Base
       reviews.each do |review|
         avg_rating += review.rating
       end
+      (avg_rating / (reviews.length)).to_f
     end
   end
 
   def display_name
-    if name.length > 9
-      name[0..8] + "..."
+    if name.length > 13
+      name[0..12] + "..."
     else
       name
     end

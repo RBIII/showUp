@@ -3,15 +3,15 @@
       <section class="search-section">
         <div class="front-search">
           <form action="<%= searches_path %>" method="GET">
-            <input id="front-search-bar" type="text" name="search" value="">
+            <input id="front-search-bar" type="text" name="search" placeholder="Search bands, venues or tags">
             <input id="front-search-button" type="submit" value="Search" class="button">
           </form>
         </div>
       </section>
     </nav>
 
-  <div class="page-content row">
-    <div class="newest-shows panel small-6 columns">
+  <div class="page-content">
+    <div class="newest-shows panel">
       <h3 class="newest-header">New</h3>
       <% @newest_shows.each do |show| %>
         <div class="show-details panel">
@@ -19,12 +19,18 @@
             <%= link_to "Tickets", show.ticket_url %>
           </div>
           <div class="votes">
+            <% if show.user_upvoted?(current_user) %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, :class => "upvote" %>
+            <% else %>
               <%= link_to "⬆", show_upvotes_path(show), method: :post %>
-              <br>
-              <%= show.sum_of_votes %>
-              <br>
+            <% end %>
+            <%= show.sum_of_votes %>
+            <% if show.user_downvoted?(current_user) %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, :class => "downvote" %>
+            <% else %>
               <%= link_to "⬇", show_downvotes_path(show), method: :post %>
-          </div class="band-and-venue">
+            <% end %>
+          </div>
           <div class="band-and-venue">
               <h4 class="band-name"><%= link_to show.band.display_name, show_path(show) %></h4>
               <h4 class="venue-name"><%= link_to show.venue.display_name, venue_path(show.venue) %></h4>
@@ -36,7 +42,7 @@
       <% end %>
     </div>
 
-    <div class="hot-shows panel small-6 columns">
+    <div class="hot-shows panel">
       <h3 class="hot-header">Hot</h3>
       <% @hot_shows.each do |show| %>
         <div class="show-details panel">
@@ -44,11 +50,17 @@
             <%= link_to "Tickets", show.ticket_url %>
           </div>
           <div class="votes">
+            <% if show.user_upvoted?(current_user) %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, :class => "upvote" %>
+            <% else %>
               <%= link_to "⬆", show_upvotes_path(show), method: :post %>
-              <br>
-              <%= show.sum_of_votes %>
-              <br>
+            <% end %>
+            <%= show.sum_of_votes %>
+            <% if show.user_downvoted?(current_user) %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, :class => "downvote" %>
+            <% else %>
               <%= link_to "⬇", show_downvotes_path(show), method: :post %>
+            <% end %>
           </div>
             <div class="band-and-venue">
               <h4 class="band-name"><%= link_to show.band.display_name, show_path(show) %></h4>
@@ -61,7 +73,7 @@
       <% end %>
     </div>
 
-    <div class="upcoming-shows panel small-6 columns end">
+    <div class="upcoming-shows panel">
       <h3 class="upcoming-header">Upcoming</h3>
       <% @upcoming_shows.each do |show| %>
         <div class="show-details panel">
@@ -69,11 +81,48 @@
             <%= link_to "Tickets", show.ticket_url %>
           </div>
           <div class="votes">
+            <% if show.user_upvoted?(current_user) %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, :class => "upvote" %>
+            <% else %>
               <%= link_to "⬆", show_upvotes_path(show), method: :post %>
-              <br>
-              <%= show.sum_of_votes %>
-              <br>
+            <% end %>
+            <%= show.sum_of_votes %>
+            <% if show.user_downvoted?(current_user) %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, :class => "downvote" %>
+            <% else %>
               <%= link_to "⬇", show_downvotes_path(show), method: :post %>
+            <% end %>
+          </div>
+            <div class="band-and-venue">
+              <h4 class="band-name"><%= link_to show.band.display_name, show_path(show) %></h4>
+              <h4 class="venue-name"><%= link_to show.venue.display_name, venue_path(show.venue) %></h4>
+            </div>
+            <div class="date-time">
+              <%= show.date %> at <%= show.time %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="upcoming-shows panel">
+      <h3 class="upcoming-header">Cheapest</h3>
+      <% @cheapest_shows.each do |show| %>
+        <div class="show-details panel">
+          <div class="ticket-url">
+            <%= link_to "Tickets", show.ticket_url %>
+          </div>
+          <div class="votes">
+            <% if show.user_upvoted?(current_user) %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, :class => "upvote" %>
+            <% else %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post %>
+            <% end %>
+            <%= show.sum_of_votes %>
+            <% if show.user_downvoted?(current_user) %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, :class => "downvote" %>
+            <% else %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post %>
+            <% end %>
           </div>
             <div class="band-and-venue">
               <h4 class="band-name"><%= link_to show.band.display_name, show_path(show) %></h4>
@@ -86,7 +135,6 @@
       <% end %>
     </div>
   </div>
-</div>
 
   <div class="all-shows-background">
   <div class="all-shows panel">
@@ -115,7 +163,9 @@
           </div>
       </div>
     <% end %>
-    <%= paginate @shows %>
+    <div class="pagination">
+      <%= paginate @shows %>
+    </div>
   </div>
 </div>
 </body>

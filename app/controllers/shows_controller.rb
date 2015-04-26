@@ -2,9 +2,11 @@ class ShowsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
   def index
       @shows = Show.includes(:band, :venue, :votes).page params[:page]
-      @newest_shows = Show.newest_shows.includes(:band, :venue, :votes)
-      @hot_shows = Show.hot_shows
-      @upcoming_shows = Show.upcoming_shows.includes(:band, :venue, :votes)
+    @newest_shows = Show.newest_shows.includes(:band, :venue, :votes)
+    @hot_shows = Show.hot_shows
+    @upcoming_shows = Show.upcoming_shows.includes(:band, :venue, :votes)
+    @cheapest_shows = Show.cheapest_shows.includes(:band, :venue, :votes)
+
   end
 
   def show

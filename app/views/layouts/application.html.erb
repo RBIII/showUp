@@ -4,6 +4,8 @@
     <title>ShowUp</title>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet' />
   </head>
   <body>
 
@@ -16,6 +18,9 @@
 
       <section class="top-bar-section">
         <ul class="right">
+          <li>
+             <%= link_to 'Shows', shows_path %>
+          </li>
           <li>
              <%= link_to 'Bands', bands_path %>
           </li>

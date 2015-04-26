@@ -18,12 +18,17 @@
 
  body {
   background-color: #eeeeee;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
  }
 
  ul
  {
  list-style-type: none;
  }
+
+.upvote {
+  color: #FF8533;
+}
+
+.downvote {
+  color: #FF8533;
+}
