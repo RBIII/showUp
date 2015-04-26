@@ -14,6 +14,7 @@ class Band < ActiveRecord::Base
       reviews.each do |review|
         avg_rating += review.rating
       end
+      (avg_rating / (reviews.length)).to_f
     end
   end
 

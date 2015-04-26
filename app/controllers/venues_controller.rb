@@ -4,8 +4,8 @@ class VenuesController < ApplicationController
   end
 
   def show
-    @venue = Venue.includes(:shows, :bands).find(params[:id])
-    # @serialized_venue = Venue.find(params[:id])
+    @venue = Venue.find(params[:id])
+    @shows = Venue.find(params[:id]).shows.page(params[:page]).per(3)
     @review = Review.new
 
     respond_to do |format|

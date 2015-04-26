@@ -1,3 +1,3 @@
 class VenueSerializer < ActiveModel::Serializer
-  attributes :latitude, :longitude
+  attributes :latitude, :longitude, :name
 end

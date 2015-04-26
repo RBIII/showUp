@@ -1,27 +1,41 @@
 <body>
   <h3 class="venue-header panel"><%= @venue.name %></h3>
-  <div id='map'></div>
   <div class="venue-shows">
-    <div class="row panel">
-      <% @venue.shows.each do |show| %>
+    <div class="venue-info panel">
+      <div id='map'></div>
+      <div>
+        <h5>Average Rating: <%= @venue.average_rating %></h5>
+        <h5>Average Price: $<%= @venue.average_price %></h5>
+      </div>
+    </div>
+    <div class="shows panel">
+      <% @shows.each do |show| %>
         <ul class="panel">
+          <% artist_info = RSpotify::Artist.search(show.band.name).first %>
+          <% if artist_info %>
+            <%= image_tag(artist_info.images.first["url"], size: "250") %>
+            <li class="preview"><%= link_to "Preview", artist_info.top_tracks(:US).sort_by { |track| track.popularity }.reverse.take(1).first.preview_url %></li>
+          <% end %>
           <li>Artist: <%= link_to show.band.name, band_path(show.band) %></li>
           <li>Date: <%= show.date %></li>
           <li>Time: <%= show.time %></li>
           <li><%= link_to "Tickets", show.ticket_url %></li>
         </ul>
       <% end %>
+      <div class="pagination">
+        <%= paginate @shows %>
+      </div>
     </div>
   </div>
 
     <%= form_for [@venue, @review] do |f| %>
       <div class= "venue-reviews row">
         <div>
-          <%= f.label :body %>
-          <%= f.text_field :body %>
-
           <%= f.label :rating %>
           <%= f.select :rating, (1..5).to_a %>
+
+          <%= f.label :body %>
+          <%= f.text_field :body %>
 
           <%= f.submit "Create review" %>
         </div>

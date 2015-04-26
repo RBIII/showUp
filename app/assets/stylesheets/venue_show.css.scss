@@ -21,8 +21,22 @@
   padding: 1%;
 }
 
+.venue-shows {
+  display: inline-flex;
+  width: 100%;
+}
+
 #map {
-  height: 400px;
-  width: 400px;
-  margin: 0 auto;
+  height: 600px;
+  width: 600px;
  }
+
+.shows {
+  width: 45%;
+  margin-left: 10%;
+}
+
+.venue-info {
+  height: 100%;
+  text-align: center;
+}
