@@ -81,7 +81,7 @@ class Show < ActiveRecord::Base
       show.sum_hot_votes
     end
 
-    hot_shows.take(5)
+    hot_shows.reverse.take(5)
   end
 
   def self.upcoming_shows
