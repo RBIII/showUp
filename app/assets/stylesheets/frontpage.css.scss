@@ -79,6 +79,8 @@ input#front-search-button {
 .search-section {
   background: {
        image: asset-url("concert.jpg");
+       repeat: no-repeat;
+       size: cover;
      }
   padding-top: 20%;
   padding-bottom: 20%;

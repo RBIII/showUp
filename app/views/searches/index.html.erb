@@ -1,14 +1,16 @@
-<h2>Your Search Results:</h2>
-<div class="search-results">
-  <ul class="panel">
-    <% @shows.each do |show| %>
-      <div class="panel">
-        <li><%= link_to show.band.name, show_path(show) %></li>
-        <li><%= link_to show.venue.name, venue_path(show.venue) %></li>
-        <div class="tags">
-          <%= show.display_tags %>
+<div class="searches-index">
+  <div class="search-results">
+    <h2 class="searches-header">Your Search Results</h2>
+      <% @shows.each do |show| %>
+        <div class="panel">
+          <h4>
+          <%= link_to show.band.name, show_path(show) %> at
+          <%= link_to show.venue.name, venue_path(show.venue) %>
+          </h4>
+          <div class="tags">
+            Tags: <%= show.display_tags %>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </ul>
+      <% end %>
+  </div>
 </div>

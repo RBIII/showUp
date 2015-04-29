@@ -2,7 +2,7 @@
 
 
 ShowUp is a Ruby on Rails backed concert aggregator that utilizes the Spotify,
-SeatGeek and Mapbox apisto get a comprehensive list of shows in Boston with
+SeatGeek and Mapbox APIs to get a comprehensive list of shows in Boston with
 album art, track listings, location services, for each show.
 
 ![ScreenShot](ShowUp.png)
