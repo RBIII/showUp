@@ -58,6 +58,10 @@
       <div class="review panel">
         <h4><%= review.user.email %> - <%= review.rating %></h4>
         <p><%= review.body %></p>
+        <% if review.owner?(current_user) %>
+          <%= link_to "Edit", edit_band_reviews_path(review), :class => "button tiny" %>
+          <%= link_to "Delete", band_reviews_path(review), method: :delete, :class => "button tiny", data: {confirm: "Are you sure?"} %>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -17,4 +17,8 @@ class Review < ActiveRecord::Base
       raise Review::UnknownReviewable
     end
   end
+
+  def owner?(current_user)
+    user == current_user
+  end
 end
