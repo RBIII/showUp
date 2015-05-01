@@ -1,0 +1,13 @@
+<div class= "review-form panel">
+  <%= form_for [@band, @review] do |f| %>
+    <div class= "row">
+      <%= f.label :rating %>
+      <%= f.select :rating, (1..5).to_a %>
+
+      <%= f.label :body %>
+      <%= f.text_field :body %>
+
+      <%= f.submit "Create review" %>
+    </div>
+  <% end %>
+</div>

@@ -13,13 +13,31 @@ class ReviewsController < ApplicationController
     redirect_to @review_object
   end
 
-  def update
-    review = Review.find_by(user: params[:user_id])
-
-    
+  def edit
+    @review = Review.find(params[:id])
+    @band = Band.find(@review.reviewable_id)
   end
 
-  def delete
+  def update
+    @review = Review.find(params[:id])
+    @band = Band.find(@review.reviewable_id)
+
+    if @review.update(review_params)
+      flash[:notice] = 'Review updated!'
+      redirect_to band_path(@band)
+    else
+      flash[:alert] = @review.errors.full_messages
+      render :edit
+    end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @band = Band.find(@review.reviewable_id)
+    if @review.destroy
+      flash[:notice] = "Review deleted"
+    end
+      redirect_to band_path(@band)
   end
 
   private
