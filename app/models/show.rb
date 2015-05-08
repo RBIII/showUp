@@ -69,14 +69,7 @@ class Show < ActiveRecord::Base
   end
 
   def self.hot_shows
-    hot_shows = []
-
-    all.each do |show|
-      if !(show.votes.where({created_at: (Time.now.midnight-1.day)..Time.now}).empty?)
-        hot_shows << show
-      end
-    end
-
+    hot_shows = joins(:votes).where(votes: {created_at: (Time.now.midnight-1.day)..Time.now}).all.includes(:votes)
     hot_shows.sort_by do |show|
       show.sum_hot_votes
     end
