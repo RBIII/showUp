@@ -19,12 +19,8 @@
   </div>
   <div class="center-page">
     <div class="shows-details panel">
+        <div id='map'></div>
       <ul>
-        <% if @artists_tracks %>
-          <li><%= image_tag(@artists_tracks.first.album.images.first["url"]) %></li>
-        <% else %>
-          <li><%= image_tag(@show.image_url) %></li>
-        <% end %>
         <li><%= link_to "Tickets", @show.ticket_url %></li>
         <li>Date: <%= @show.date %></li>
         <li>Time: <%= @show.time %></li>
@@ -40,8 +36,9 @@
         <h3 class="tracks-header">Top Tracks</h3>
         <% @artists_tracks.each do |track| %>
           <div class="panel">
-            <p class="preview"><%=link_to "Preview", track.preview_url %></p>
             <h4 class="track-info "><%= track.name %> - <%= track.album.name %></h4>
+            <iframe src="https://embed.spotify.com/?uri=<%= track.uri %>" frameborder="0" allowtransparency="true"></iframe>
+            <p class="preview"><%=link_to "Free Preview", track.preview_url %></p>
           </div>
         <% end %>
       <% else %>
