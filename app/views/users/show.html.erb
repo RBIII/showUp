@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <div class="user-background">
+    <h1 class="user-header">Welcome back, <%= @user.email %>!</h1>
+    </div>
+    <div class="user-content">
+      <div class="myshowup-upvotes panel">
+      <h3>Your Upvotes</h3>
+        <ul>
+          <% @user.votes.each do |vote| %>
+            <% if vote.is_upvote? %> 
+              <li><%= link_to "#{vote.show.band.name} at #{vote.show.venue.name}", show_path(vote.show) %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+
