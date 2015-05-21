@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :venues, only: [:index, :show] do
     resources :reviews, only: [:create, :edit, :update, :destroy]
+    resources :favorites, only: [:create]
   end
 
   resources :shows, only: [:index, :show, :edit, :update] do
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :bands, only: [:index, :show] do
     resources :reviews, only: [:create, :edit, :update, :destroy]
+    resources :favorites, only: [:create]
   end
 
   resources :searches, only: [:index]
