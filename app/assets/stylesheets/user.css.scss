@@ -13,7 +13,13 @@
 }
 
 .user-content {
-  width: 40%;
-  margin: 1% auto;
+  max-width: 100%;
+  width: 100%;
+  margin-top: 1%;
   text-align: center;
+}
+
+.myshowup-upvotes {
+  margin-left: 4%;
+  margin-right: 8%;
 }
