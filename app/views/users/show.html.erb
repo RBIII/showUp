@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <div class="user-background">
+      <h1 class="user-header">Welcome back, <%= @user.email %>!</h1>
+    </div>
+
+    <div class="user-content row">
+      <div class="myshowup-upvotes panel small-4 column">
+      <h3>Upvotes</h3>
+        <ul>
+          <% @user.votes.each do |vote| %>
+            <% if vote.is_upvote? %>
+              <li><%= link_to "#{vote.show.band.name} at #{vote.show.venue.name}", show_path(vote.show) %> - <%= vote.show.date %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="myshowup-favoriteBands panel small-3 column">
+        <h3>Favorite Bands</h3>
+        <ul>
+          <% @user.favorite_bands.each do |band| %>
+            <li>
+              <%= link_to "#{band.band.name}", band_path(band) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="myshowup-favoriteVenues panel small-3 column end">
+        <h3>Favorite Venues</h3>
+        <ul>
+          <% @user.favorite_venues.each do |venue| %>
+            <li>
+              <%= link_to "#{venue.venue.name}", venue_path(venue) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

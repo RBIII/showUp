@@ -24,6 +24,8 @@
         <li><%= link_to "Tickets", @show.ticket_url %></li>
         <li>Date: <%= @show.date %></li>
         <li>Time: <%= @show.time %></li>
+        <li><%= link_to "Favorite Band", band_favorites_path(@show.band), method: :post %></li>
+        <li><%= link_to "Favorite Venue", venue_favorites_path(@show.venue), method: :post %></li>
       </ul>
       <div class="tags">
         Tags: <%= @show.display_tags %>

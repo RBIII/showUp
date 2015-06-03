@@ -18,6 +18,13 @@
 
       <section class="top-bar-section">
         <ul class="right">
+
+          <% if current_user %>
+            <li>
+              <%= link_to 'My ShowUp',
+                user_path(current_user) %>
+            </li>
+          <% end %>
           <li>
              <%= link_to 'Shows', shows_path %>
           </li>
