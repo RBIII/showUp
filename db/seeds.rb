@@ -15,4 +15,9 @@ def read_shows
   end
 end
 
+def delete_old
+  Show.where("date < ?", Date.today.to_s).delete_all
+end
+
+delete_old
 read_shows

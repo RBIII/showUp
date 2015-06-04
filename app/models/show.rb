@@ -1,8 +1,8 @@
 class Show < ActiveRecord::Base
   belongs_to :band
   belongs_to :venue
-  has_many :reviews, as: :reviewable
-  has_many :votes
+  has_many :reviews, as: :reviewable, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   validates :date, presence: true
   validates :time, presence: true

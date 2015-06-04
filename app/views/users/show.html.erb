@@ -24,9 +24,9 @@
       <div class="myshowup-favoriteBands panel small-3 column">
         <h3>Favorite Bands</h3>
         <ul>
-          <% @user.favorite_bands.each do |band| %>
+          <% @user.favorite_bands.each do |fav_band| %>
             <li>
-              <%= link_to "#{band.band.name}", band_path(band) %>
+              <%= link_to "#{fav_band.band.name}", band_path(fav_band) %>
             </li>
           <% end %>
         </ul>
@@ -35,13 +35,22 @@
       <div class="myshowup-favoriteVenues panel small-3 column end">
         <h3>Favorite Venues</h3>
         <ul>
-          <% @user.favorite_venues.each do |venue| %>
+          <% @user.favorite_venues.each do |fav_venue| %>
             <li>
-              <%= link_to "#{venue.venue.name}", venue_path(venue) %>
+              <%= link_to "#{fav_venue.venue.name}", venue_path(fav_venue) %>
             </li>
           <% end %>
         </ul>
       </div>
+    </div>
+
+    <div class="myshowup-upcomingShows panel">
+      <h3>Upcoming Shows for you!</h3>
+      <ul>
+        <% @user_shows.each do |show| %>
+          <li class="panel"><%= link_to(show.band.name, show_path(show)) %> at <%= link_to(show.venue.name, venue_path(show.venue)) %></li>
+        <% end %>
+      </ul>
     </div>
   </body>
 </html>
