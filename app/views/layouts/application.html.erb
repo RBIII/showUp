@@ -59,7 +59,7 @@
 
     <%= yield %>
 
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'jquery', 'application' %>
     <%= render 'layouts/footer' %>
     <%= yield :extra_footer %>
   </body>

@@ -5,13 +5,13 @@
         <% if @show.user_upvoted?(current_user) %>
           <%= link_to "⬆", show_upvotes_path(@show), method: :post, :class => "upvote" %>
         <% else %>
-          <%= link_to "⬆", show_upvotes_path(@show), method: :post %>
+          <%= link_to "⬆", show_upvotes_path(@show), method: :post, :class => "novote-up" %>
         <% end %>
         <%= @show.sum_of_votes %>
         <% if @show.user_downvoted?(current_user) %>
           <%= link_to "⬇", show_downvotes_path(@show), method: :post, :class => "downvote" %>
         <% else %>
-          <%= link_to "⬇", show_downvotes_path(@show), method: :post %>
+          <%= link_to "⬇", show_downvotes_path(@show), method: :post, :class => "novote-down"%>
         <% end %>
       </div>
       <h3 class="show-header-text"><%= @show.band.name %> at <%= @show.venue.name %> </h3>
