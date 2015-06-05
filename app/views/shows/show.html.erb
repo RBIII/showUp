@@ -3,15 +3,15 @@
     <div class="show-header panel">
       <div class="show-votes">
         <% if @show.user_upvoted?(current_user) %>
-          <%= link_to "⬆", show_upvotes_path(@show), method: :post, :class => "upvote" %>
+          <%= link_to "⬆", show_upvotes_path(@show), method: :post, class: "upvote" %>
         <% else %>
-          <%= link_to "⬆", show_upvotes_path(@show), method: :post, :class => "novote-up" %>
+          <%= link_to "⬆", show_upvotes_path(@show), method: :post, class: "novote-up" %>
         <% end %>
         <%= @show.sum_of_votes %>
         <% if @show.user_downvoted?(current_user) %>
-          <%= link_to "⬇", show_downvotes_path(@show), method: :post, :class => "downvote" %>
+          <%= link_to "⬇", show_downvotes_path(@show), method: :post, class: "downvote", remote: true %>
         <% else %>
-          <%= link_to "⬇", show_downvotes_path(@show), method: :post, :class => "novote-down"%>
+          <%= link_to "⬇", show_downvotes_path(@show), method: :post, class: "novote-down", remote: true %>
         <% end %>
       </div>
       <h3 class="show-header-text"><%= @show.band.name %> at <%= @show.venue.name %> </h3>

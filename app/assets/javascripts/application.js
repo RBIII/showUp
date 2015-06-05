@@ -28,10 +28,3 @@ $('.page-content').slick({
   autoplay: true,
   autoplaySpeed: 2000,
 });
-
-$(document).ready(function(){
-  $('.novote-up').submit(function(){
-    $.post($(this).attr('action') + '.js', $(this).serialize(), null, 'script')
-    return false
-  })
-})

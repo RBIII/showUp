@@ -1,6 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/RoccStar/basshows-rails/badge.svg)](https://coveralls.io/r/RoccStar/basshows-rails)
 
-Checkout the site at showupboston.herokuapp.com
+Checkout the site! [ShowUp](showupboston.herokuapp.com)
 
 ShowUp is a Ruby on Rails backed concert aggregator that utilizes the Spotify,
 SeatGeek and Mapbox APIs to get a comprehensive list of shows in Boston with
