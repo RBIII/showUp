@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'visitor upvotes reviews' do
   context 'as an authorized user' do
-    scenario 'I can upvote a review' do
+    scenario 'I can upvote a show' do
       user = FactoryGirl.create(:user)
       sign_in_as(user)
 

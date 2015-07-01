@@ -12,7 +12,7 @@ class DownvotesController < ApplicationController
     VoteManager.new(current_user, @show).downvote
     @vote = Vote.find_by(show: @show)
     respond_to do |format|
-      format.html
+      format.html {redirect_to @show}
       format.js
     end
   end
