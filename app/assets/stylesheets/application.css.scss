@@ -28,6 +28,16 @@
 
  .upvote {
    color: #FF8533;
+   float: left;
+ }
+
+ .novote-up {
+   float: left;
+ }
+
+ p.sum-of-votes {
+   color: #FB914B;
+   float: left;
  }
 
  .downvote {
