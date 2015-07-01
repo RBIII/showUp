@@ -7,12 +7,15 @@ def read_shows
         band = Band.find_or_create_by(name: event["performers"].first["name"])
 
         Show.find_or_create_by(date: event["datetime_local"].split("T")[0], time: event["datetime_local"].split("T")[1],
-        ticket_url: event["url"], image_url: event["performers"].first["image"], avg_price: event["stats"]["average_price"],
-        band_id: band.id, venue_id: venue.id)
+        image_url: event["performers"].first["image"], band_id: band.id, venue_id: venue.id)
       end
     end
     counter += 1
   end
+end
+
+def delete_old
+  Show.where("date < ?", Date.today.to_s).delete_all
 end
 
 read_shows

@@ -1,12 +1,12 @@
 class ShowsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
   def index
-    @shows = Show.includes(:band, :venue, :votes).page params[:page]
+    @order = :date
+    @shows = Show.includes(:band, :venue, :votes).where("date > ?", Time.now).order(date: :asc).page params[:page]
     @newest_shows = Show.newest_shows.includes(:band, :venue, :votes)
     @hot_shows = Show.hot_shows
     @upcoming_shows = Show.upcoming_shows.includes(:band, :venue, :votes)
     @cheapest_shows = Show.cheapest_shows.includes(:band, :venue, :votes)
-
   end
 
   def show
@@ -40,5 +40,9 @@ class ShowsController < ApplicationController
   private
   def show_params
     params.require(:show).permit(:tag_list)
+  end
+
+  def order
+
   end
 end

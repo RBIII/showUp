@@ -12,11 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require foundation
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
 
+$(function() {
+  $('.flash-messages').delay(1500).fadeOut(600);
+});
 
 $('.page-content').slick({
   slidesToShow: 3,

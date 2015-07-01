@@ -47,7 +47,6 @@ group :development, :test do
   gem 'coveralls'
 end
 
-
 gem 'rspec-rails', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
 gem 'launchy', group: [:development, :test]
@@ -59,3 +58,4 @@ gem 'foundation-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'rspotify'
 gem 'kaminari'
+gem 'jquery-ui-rails'

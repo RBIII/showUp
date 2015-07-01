@@ -1,8 +1,8 @@
 class Show < ActiveRecord::Base
   belongs_to :band
   belongs_to :venue
-  has_many :reviews, as: :reviewable
-  has_many :votes
+  has_many :reviews, as: :reviewable, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   validates :date, presence: true
   validates :time, presence: true
@@ -10,7 +10,6 @@ class Show < ActiveRecord::Base
   validates :venue, presence: true
   acts_as_taggable
   paginates_per 10
-
 
   def sum_of_votes
     sum = 0
@@ -78,7 +77,7 @@ class Show < ActiveRecord::Base
   end
 
   def self.upcoming_shows
-    order(date: :asc).limit(5)
+    where("date > ?", Time.now).order(date: :asc).limit(5)
   end
 
   def self.cheapest_shows
