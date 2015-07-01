@@ -1,11 +1,21 @@
+.band-header-background {
+  background-color: #1F3A85;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
 .band-header
 {
   width: 80%;
-  margin: 3% auto;
+  margin: 0 auto;
   background: {
     color: #170563;
   }
   text-align: center;
+  color: white;
+}
+
+h3.band-header-text {
   color: white;
 }
 

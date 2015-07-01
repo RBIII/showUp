@@ -17,19 +17,60 @@
  */
 
  body {
-  background-color: #eeeeee;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+   background-color: #cccccc;
+   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  ul
+  {
+  list-style-type: none;
+  }
+
+ .upvote {
+   color: #FF8533;
  }
 
- ul
- {
- list-style-type: none;
+ .downvote {
+   color: #FF8533;
  }
 
-.upvote {
-  color: #FF8533;
-}
+ .flash {
+   background-color: #008CBA;
+   height: 40px;
+   text-align: center;
+ }
 
-.downvote {
-  color: #FF8533;
-}
+ .flash-text {
+   color: white;
+   position: relative;
+   top: 50%;
+   transform: translateY(-50%);
+ }
+
+ .reviews-header {
+   color: white !important;
+ }
+
+ .review-form {
+   width: 70%;
+   margin: 0 auto;
+   margin-top: 5%;
+   border: 1px solid black;
+ }
+
+ .reviews {
+   width: 70%;
+   margin: 0 auto;
+   margin-top: 3%;
+ }
+
+ .reviews-background {
+   background-color: #1F3A85;
+   padding-top: .3%;
+   padding-bottom: 2%;
+ }
+
+ .center-page {
+   padding-top: 2%;
+   padding-bottom: 2%;
+ }

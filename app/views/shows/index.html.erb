@@ -20,15 +20,15 @@
           </div>
           <div class="votes">
             <% if show.user_upvoted?(current_user) %>
-              <%= link_to "⬆", show_upvotes_path(show), method: :post, :class => "upvote" %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, class: "upvote #{show.id}-up", remote: true %>
             <% else %>
-              <%= link_to "⬆", show_upvotes_path(show), method: :post %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, class: "novote-up #{show.id}-noup", remote: true%>
             <% end %>
-            <%= show.sum_of_votes %>
+            <p class= "sum-of-votes <%= show.id %>-sum"><%= show.sum_of_votes %></p>
             <% if show.user_downvoted?(current_user) %>
-              <%= link_to "⬇", show_downvotes_path(show), method: :post, :class => "downvote" %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, class: "downvote #{show.id}-down", remote: true %>
             <% else %>
-              <%= link_to "⬇", show_downvotes_path(show), method: :post %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, class: "novote-down #{show.id}-nodown", remote: true %>
             <% end %>
           </div>
           <div class="band-and-venue">
@@ -51,15 +51,15 @@
           </div>
           <div class="votes">
             <% if show.user_upvoted?(current_user) %>
-              <%= link_to "⬆", show_upvotes_path(show), method: :post, :class => "upvote" %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, class: "upvote #{show.id}-up", remote: true %>
             <% else %>
-              <%= link_to "⬆", show_upvotes_path(show), method: :post %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, class: "novote-up #{show.id}-noup", remote: true%>
             <% end %>
-            <%= show.sum_of_votes %>
+            <p class= "sum-of-votes <%= show.id %>-sum"><%= show.sum_of_votes %></p>
             <% if show.user_downvoted?(current_user) %>
-              <%= link_to "⬇", show_downvotes_path(show), method: :post, :class => "downvote" %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, class: "downvote #{show.id}-down", remote: true %>
             <% else %>
-              <%= link_to "⬇", show_downvotes_path(show), method: :post %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, class: "novote-down #{show.id}-nodown", remote: true %>
             <% end %>
           </div>
             <div class="band-and-venue">
@@ -82,15 +82,15 @@
           </div>
           <div class="votes">
             <% if show.user_upvoted?(current_user) %>
-              <%= link_to "⬆", show_upvotes_path(show), method: :post, :class => "upvote" %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, class: "upvote #{show.id}-up", remote: true %>
             <% else %>
-              <%= link_to "⬆", show_upvotes_path(show), method: :post %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, class: "novote-up #{show.id}-noup", remote: true%>
             <% end %>
-            <%= show.sum_of_votes %>
+            <p class= "sum-of-votes <%= show.id %>-sum"><%= show.sum_of_votes %></p>
             <% if show.user_downvoted?(current_user) %>
-              <%= link_to "⬇", show_downvotes_path(show), method: :post, :class => "downvote" %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, class: "downvote #{show.id}-down", remote: true %>
             <% else %>
-              <%= link_to "⬇", show_downvotes_path(show), method: :post %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, class: "novote-down #{show.id}-nodown", remote: true %>
             <% end %>
           </div>
             <div class="band-and-venue">
@@ -113,15 +113,15 @@
           </div>
           <div class="votes">
             <% if show.user_upvoted?(current_user) %>
-              <%= link_to "⬆", show_upvotes_path(show), method: :post, :class => "upvote" %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, class: "upvote #{show.id}-up", remote: true %>
             <% else %>
-              <%= link_to "⬆", show_upvotes_path(show), method: :post %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, class: "novote-up #{show.id}-noup", remote: true%>
             <% end %>
-            <%= show.sum_of_votes %>
+            <p class= "sum-of-votes <%= show.id %>-sum"><%= show.sum_of_votes %></p>
             <% if show.user_downvoted?(current_user) %>
-              <%= link_to "⬇", show_downvotes_path(show), method: :post, :class => "downvote" %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, class: "downvote #{show.id}-down", remote: true %>
             <% else %>
-              <%= link_to "⬇", show_downvotes_path(show), method: :post %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, class: "novote-down #{show.id}-nodown", remote: true %>
             <% end %>
           </div>
             <div class="band-and-venue">
@@ -145,12 +145,19 @@
           <%= link_to "Tickets", show.ticket_url %>
         </div>
         <div class="votes">
-            <%= link_to "⬆", show_upvotes_path(show), method: :post %>
+            <% if show.user_upvoted?(current_user) %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, class: "upvote #{show.id}-up", remote: true %>
+            <% else %>
+              <%= link_to "⬆", show_upvotes_path(show), method: :post, class: "novote-up #{show.id}-noup", remote: true%>
+            <% end %>
             <br>
-            <%= show.sum_of_votes %>
+            <p class= "sum-of-votes <%= show.id %>-sum"><%= show.sum_of_votes %></p>
             <br>
-            <%= link_to "⬇", show_downvotes_path(show), method: :post %>
-        </div>
+            <% if show.user_downvoted?(current_user) %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, class: "downvote #{show.id}-down", remote: true %>
+            <% else %>
+              <%= link_to "⬇", show_downvotes_path(show), method: :post, class: "novote-down #{show.id}-nodown", remote: true %>
+            <% end %>        </div>
           <div class="band-and-venue">
             <h4 class="band-name"><%= link_to show.band.name, show_path(show) %></h4>
             <h4 class="all-shows-venue-name"><%= link_to show.venue.name, venue_path(show.venue) %></h4>

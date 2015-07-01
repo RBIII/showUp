@@ -1,0 +1,20 @@
+var id = <%= @show.id %>;
+var vote_value = parseInt($('.' + id + '-sum').first().text());
+var difference = <%= @vote.value - @last_value %>;
+
+if(difference === 2){
+  $('.' + id + '-down').removeClass('downvote').removeClass(id + '-down').addClass('novote-down').addClass(id + '-nodown');
+  $('.' + id + '-noup').removeClass('novote-up').removeClass(id + '-noup').addClass('upvote').addClass(id + '-up');
+  vote_value += difference;
+  $('.' + id + '-sum').html(String(vote_value));
+}
+else if(difference === 1){
+  $('.' + id + '-noup').removeClass('novote-up').removeClass(id + '-noup').addClass('upvote').addClass(id + '-up');
+  vote_value += difference;
+  $('.' + id + '-sum').html(String(vote_value));
+}
+else{
+  $('.' + id + '-up').removeClass('upvote').removeClass(id + '-up').addClass('novote-up').addClass(id + '-noup');
+  vote_value += difference;
+  $('.' + id + '-sum').html(String(vote_value));
+}

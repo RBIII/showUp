@@ -3,15 +3,15 @@
     <div class="show-header panel">
       <div class="show-votes">
         <% if @show.user_upvoted?(current_user) %>
-          <%= link_to "⬆", show_upvotes_path(@show), method: :post, :class => "upvote" %>
+          <%= link_to "⬆", show_upvotes_path(@show), method: :post, class: "upvote #{@show.id}-up", remote: true %>
         <% else %>
-          <%= link_to "⬆", show_upvotes_path(@show), method: :post %>
+          <%= link_to "⬆", show_upvotes_path(@show), method: :post, class: "novote-up #{@show.id}-noup", remote: true%>
         <% end %>
-        <%= @show.sum_of_votes %>
+        <p class= "sum-of-votes <%= @show.id %>-sum"><%= @show.sum_of_votes %></p>
         <% if @show.user_downvoted?(current_user) %>
-          <%= link_to "⬇", show_downvotes_path(@show), method: :post, :class => "downvote" %>
+          <%= link_to "⬇", show_downvotes_path(@show), method: :post, class: "downvote #{@show.id}-down", remote: true %>
         <% else %>
-          <%= link_to "⬇", show_downvotes_path(@show), method: :post %>
+          <%= link_to "⬇", show_downvotes_path(@show), method: :post, class: "novote-down #{@show.id}-nodown", remote: true %>
         <% end %>
       </div>
       <h3 class="show-header-text"><%= @show.band.name %> at <%= @show.venue.name %> </h3>
@@ -24,6 +24,8 @@
         <li><%= link_to "Tickets", @show.ticket_url %></li>
         <li>Date: <%= @show.date %></li>
         <li>Time: <%= @show.time %></li>
+        <li><%= link_to "Favorite Band", band_favorites_path(@show.band) %></li>
+        <li><%= link_to "Favorite Venue", venue_favorites_path(@show.venue) %></li>
       </ul>
       <div class="tags">
         Tags: <%= @show.display_tags %>
@@ -46,29 +48,30 @@
       <% end %>
     </div>
   </div>
+  <div class="reviews-background">
+    <div class= "review-form panel">
+      <%= form_for [@show, @review] do |f| %>
+        <div class= "row">
+          <%= f.label :rating %>
+          <%= f.select :rating, (1..5).to_a %>
 
-  <div class= "review-form panel">
-    <%= form_for [@show, @review] do |f| %>
-      <div class= "row">
-        <%= f.label :rating %>
-        <%= f.select :rating, (1..5).to_a %>
+          <%= f.label :body %>
+          <%= f.text_field :body %>
 
-        <%= f.label :body %>
-        <%= f.text_field :body %>
+          <%= f.submit "Create review" %>
+        </div>
+      <% end %>
+    </div>
 
-        <%= f.submit "Create review" %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="reviews panel">
-    <h4 class="reviews-header">Reviews</h4>
-    <% @show.reviews.each do |review| %>
-      <div class="review panel">
-        <h3><%= review.user.email %> - <%= review.rating %></h3>
-        <p><%= review.body %><p>
-      </div>
-    <% end %>
+    <div class="reviews panel">
+      <h4 class="reviews-header">Reviews</h4>
+      <% @show.reviews.each do |review| %>
+        <div class="review panel">
+          <h3><%= review.user.email %> - <%= review.rating %></h3>
+          <p><%= review.body %><p>
+        </div>
+      <% end %>
+    </div>
   </div>
 
 </body>

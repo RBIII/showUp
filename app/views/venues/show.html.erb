@@ -1,18 +1,27 @@
 <body>
-  <h3 class="venue-header panel"><%= @venue.name %></h3>
+  <div class="venue-header-background">
+    <div class="venue-header panel">
+      <h3 class="venue-header-text"><%= @venue.name %></h3>
+    </div>
+  </div>
+
   <div class="venue-shows">
     <div class="venue-info panel">
       <div id='map'></div>
-      <div>
-        <h5>Average Rating: <%= @venue.average_rating %></h5>
-        <h5>Average Price: $<%= @venue.average_price %></h5>
-      </div>
+        <div>
+          <ul>
+            <li>Average Rating: <%= @venue.average_rating %></li>
+            <li>Average Price: $<%= @venue.average_price %></li>
+            <li><%= link_to "Favorite Venue", venue_favorites_path(@venue), method: :post %></li>
+          </ul>
+        </div>
     </div>
+
     <div class="shows panel">
       <% @shows.each do |show| %>
         <ul class="panel">
           <% artist_info = RSpotify::Artist.search(show.band.name).first %>
-          <% if artist_info %>
+          <% unless artist_info || artist_info.nil? %>
             <%= image_tag(artist_info.images.first["url"], size: "250") %>
             <li class="preview"><%= link_to "Preview", artist_info.top_tracks(:US).sort_by { |track| track.popularity }.reverse.take(1).first.preview_url %></li>
           <% end %>
@@ -28,27 +37,31 @@
     </div>
   </div>
 
-    <%= form_for [@venue, @review] do |f| %>
-      <div class= "venue-reviews row">
-        <div>
-          <%= f.label :rating %>
-          <%= f.select :rating, (1..5).to_a %>
+  <div class="reviews-background">
+    <div class= "review-form panel">
+      <%= form_for [@venue, @review] do |f| %>
+        <div class= "venue-reviews row">
+          <div>
+            <%= f.label :rating %>
+            <%= f.select :rating, (1..5).to_a %>
 
-          <%= f.label :body %>
-          <%= f.text_field :body %>
+            <%= f.label :body %>
+            <%= f.text_field :body %>
 
-          <%= f.submit "Create review" %>
+            <%= f.submit "Create review" %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 
-  <div class="reviews panel">
-    <h4 class="reviews-header">Reviews</h4>
-    <% @venue.reviews.each do |review| %>
-      <div class="review panel">
-        <%= review.rating %>
-        <%= review.body %>
-      </div>
-    <% end %>
+    <div class="reviews panel">
+      <h4 class="reviews-header">Reviews</h4>
+      <% @venue.reviews.each do |review| %>
+        <div class="review panel">
+          <%= review.rating %>
+          <%= review.body %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </body>

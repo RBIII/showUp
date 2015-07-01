@@ -1,12 +1,18 @@
 <body>
-  <h3 class="band-header panel"><%= @band.name %></h3>
+  <div class="band-header-background">
+    <div class="band-header panel">
+      <h3 class="band-header-text"><%= @band.name %></h3>
+    </div>
+  </div>
 
   <div class="center-page">
     <div class="band-shows-info panel">
-      <h3>Upcoming Shows</h3>
       <ul>
         <% if @artists_tracks %>
-          <li><%= image_tag(@artists_tracks.first.album.images.first["url"]) %></li>
+          <li>
+            <%= image_tag(@artists_tracks.first.album.images.first["url"]) %>
+            <%= link_to "Favorite Band", band_favorites_path(@band), method: :post %>
+          </li>
         <% elsif @band.shows.first %>
           <li><%= image_tag(@band.shows.first.image_url) %></li>
         <% else %>
@@ -38,31 +44,34 @@
     </div>
   </div>
 
-  <div class= "review-form panel">
-    <%= form_for [@band, @review] do |f| %>
-      <div class= "row">
-        <%= f.label :rating %>
-        <%= f.select :rating, (1..5).to_a %>
+  <div class="reviews-background">
+    <div class= "review-form panel">
+      <%= form_for [@band, @review] do |f| %>
+        <div class= "row">
+          <%= f.label :rating %>
+          <%= f.select :rating, (1..5).to_a %>
 
-        <%= f.label :body %>
-        <%= f.text_field :body %>
+          <%= f.label :body %>
+          <%= f.text_field :body %>
 
-        <%= f.submit "Create review" %>
-      </div>
-    <% end %>
+          <%= f.submit "Create review" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="reviews panel">
+      <h4 class="reviews-header">Reviews</h4>
+      <% @band.reviews.each do |review| %>
+        <div class="review panel">
+          <h4><%= review.user.email %> - <%= review.rating %></h4>
+          <p><%= review.body %></p>
+          <% if review.owner?(current_user) %>
+            <%= link_to "Edit", edit_band_review_path(review.id, review.reviewable_id), :class => "button tiny" %>
+            <%= link_to "Delete", band_review_path(@band, review), method: :delete, :class => "button tiny", data: {confirm: "Are you sure?"} %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div class="reviews panel">
-    <h4 class="reviews-header">Reviews</h4>
-    <% @band.reviews.each do |review| %>
-      <div class="review panel">
-        <h4><%= review.user.email %> - <%= review.rating %></h4>
-        <p><%= review.body %></p>
-        <% if review.owner?(current_user) %>
-          <%= link_to "Edit", edit_band_review_path(review.id, review.reviewable_id), :class => "button tiny" %>
-          <%= link_to "Delete", band_review_path(@band, review), method: :delete, :class => "button tiny", data: {confirm: "Are you sure?"} %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
 </body>
