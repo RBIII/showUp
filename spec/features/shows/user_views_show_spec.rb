@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'a visitor views a show\'s details page' do
 
   context 'as an authroized user' do
-    scenario 'I can write a review for a show' do
+    scenario 'I can view a show\'s details page' do
       user = FactoryGirl.create(:user)
       sign_in_as(user)
 

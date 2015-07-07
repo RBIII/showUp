@@ -3,18 +3,18 @@ var vote_value = parseInt($('.' + id + '-sum').first().text());
 var difference = <%= @vote.value - @last_value %>;
 
 if(difference === 2){
-  $('.' + id + '-down').removeClass('downvote').removeClass(id + '-down').addClass('novote-down').addClass(id + '-nodown');
-  $('.' + id + '-noup').removeClass('novote-up').removeClass(id + '-noup').addClass('upvote').addClass(id + '-up');
+  $('.' + id + '-down').removeClass('downvote').removeClass(id + '-down').addClass('novote-down').addClass(id + '-nodown').css({'color': '#008CBA'});
+  $('.' + id + '-noup').removeClass('novote-up').removeClass(id + '-noup').addClass('upvote').addClass(id + '-up').css({'color': '#FF8533'});
   vote_value += difference;
   $('.' + id + '-sum').html(String(vote_value));
 }
 else if(difference === 1){
-  $('.' + id + '-noup').removeClass('novote-up').removeClass(id + '-noup').addClass('upvote').addClass(id + '-up');
+  $('.' + id + '-noup').removeClass('novote-up').removeClass(id + '-noup').addClass('upvote').addClass(id + '-up').css({'color': '#FF8533'});
   vote_value += difference;
   $('.' + id + '-sum').html(String(vote_value));
 }
 else{
-  $('.' + id + '-up').removeClass('upvote').removeClass(id + '-up').addClass('novote-up').addClass(id + '-noup');
+  $('.' + id + '-up').removeClass('upvote').removeClass(id + '-up').addClass('novote-up').addClass(id + '-noup').css({'color': '#008CBA'});
   vote_value += difference;
   $('.' + id + '-sum').html(String(vote_value));
 }
