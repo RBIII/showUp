@@ -18,7 +18,6 @@ feature 'a visitor views a band\'s details page' do
   end
 
   context 'as a visitor' do
-
     scenario 'I can view a bands\'s details page'  do
       show = FactoryGirl.create(:show)
 
