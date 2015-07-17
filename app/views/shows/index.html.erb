@@ -150,9 +150,7 @@
             <% else %>
               <%= link_to "&#9650;".html_safe, show_upvotes_path(show), method: :post, class: "novote-up #{show.id}-noup", remote: true%>
             <% end %>
-            <br>
             <p class= "sum-of-votes <%= show.id %>-sum"><%= show.sum_of_votes %></p>
-            <br>
             <% if show.user_downvoted?(current_user) %>
               <%= link_to "&#9660;".html_safe, show_downvotes_path(show), method: :post, class: "downvote #{show.id}-down", remote: true %>
             <% else %>

@@ -9,7 +9,7 @@ feature 'visitor upvotes reviews' do
       show = FactoryGirl.create(:show)
       visit show_path(show)
 
-      click_link "⬇"
+      click_link "▼"
       expect(page).to have_content("-1")
     end
   end
@@ -20,7 +20,7 @@ feature 'visitor upvotes reviews' do
       show = FactoryGirl.create(:show)
       visit show_path(show)
 
-      click_link "⬇"
+      click_link "▼"
       expect(page).to have_content("Email")
       expect(page).to have_content("Password")
       expect(page).to have_content("Remember me")
