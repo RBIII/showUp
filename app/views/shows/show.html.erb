@@ -3,15 +3,15 @@
     <div class="show-header panel">
       <div class="show-votes">
         <% if @show.user_upvoted?(current_user) %>
-          <%= link_to "⬆", show_upvotes_path(@show), method: :post, class: "upvote #{@show.id}-up", remote: true %>
+          <%= link_to "&#9650;".html_safe, show_upvotes_path(@show), method: :post, class: "upvote #{@show.id}-up", remote: true %>
         <% else %>
-          <%= link_to "⬆", show_upvotes_path(@show), method: :post, class: "novote-up #{@show.id}-noup", remote: true%>
+          <%= link_to "&#9650;".html_safe, show_upvotes_path(@show), method: :post, class: "novote-up #{@show.id}-noup", remote: true%>
         <% end %>
         <p class= "sum-of-votes <%= @show.id %>-sum"><%= @show.sum_of_votes %></p>
         <% if @show.user_downvoted?(current_user) %>
-          <%= link_to "⬇", show_downvotes_path(@show), method: :post, class: "downvote #{@show.id}-down", remote: true %>
+          <%= link_to "&#9660;".html_safe, show_downvotes_path(@show), method: :post, class: "downvote #{@show.id}-down", remote: true %>
         <% else %>
-          <%= link_to "⬇", show_downvotes_path(@show), method: :post, class: "novote-down #{@show.id}-nodown", remote: true %>
+          <%= link_to "&#9660;".html_safe, show_downvotes_path(@show), method: :post, class: "novote-down #{@show.id}-nodown", remote: true %>
         <% end %>
       </div>
       <h3 class="show-header-text"><%= @show.band.name %> at <%= @show.venue.name %> </h3>

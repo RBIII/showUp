@@ -2,6 +2,10 @@ var id = <%= @show.id %>;
 var vote_value = parseInt($('.' + id + '-sum').first().text());
 var difference = <%= @vote.value - @last_value %>;
 
+if(!<%= current_user %>){
+  <% binding.pry %>;
+}
+
 if(difference === -2){
   $('.' + id + '-up').removeClass('upvote').removeClass(id + '-up').addClass('novote-up').addClass(id + '-noup').css({'color': '#008CBA'});
   $('.' + id + '-nodown').removeClass('novote-down').removeClass(id + '-nodown').addClass('downvote').addClass(id + '-down').css({'color': '#FF8533'});
