@@ -48,13 +48,14 @@
    background-color: #008CBA;
    height: 40px;
    text-align: center;
+   color: white;
+   padding-top: .3%;
+   font-size: 20px;
  }
 
  .flash-text {
-   color: white;
    position: relative;
    top: 50%;
-   transform: translateY(-50%);
  }
 
  .reviews-header {
