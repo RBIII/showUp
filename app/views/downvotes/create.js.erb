@@ -1,24 +1,20 @@
 var id = <%= @show.id %>;
-var vote_value = parseInt($('.' + id + '-sum').first().text());
+var page_votes = parseInt($('.' + id + '-sum').first().text());
 var difference = <%= @vote.value - @last_value %>;
 
-if(!<%= current_user %>){
-  <% binding.pry %>;
-}
-
 if(difference === -2){
-  $('.' + id + '-up').removeClass('upvote').removeClass(id + '-up').addClass('novote-up').addClass(id + '-noup').css({'color': '#008CBA'});
-  $('.' + id + '-nodown').removeClass('novote-down').removeClass(id + '-nodown').addClass('downvote').addClass(id + '-down').css({'color': '#FF8533'});
-  vote_value += difference;
-  $('.' + id + '-sum').html(String(vote_value));
+  $('.' + id + '-up').css({'color': '#008CBA'}).removeClass(id + '-up').addClass(id + '-noup');
+  $('.' + id + '-nodown').css({'color': '#FF8533'}).removeClass(id + '-nodown').addClass(id + '-down');
+  page_votes += difference;
+  $('.' + id + '-sum').html(String(page_votes));
 }
 else if(difference === -1){
-  $('.' + id + '-nodown').removeClass('novote-down').removeClass(id + '-nodown').addClass('downvote').addClass(id + '-down').css({'color': '#FF8533'});
-  vote_value += difference;
-  $('.' + id + '-sum').html(String(vote_value));
+  $('.' + id + '-nodown').css({'color': '#FF8533'}).removeClass(id + '-nodown').addClass(id + '-down');
+  page_votes += difference;
+  $('.' + id + '-sum').html(String(page_votes));
 }
 else{
-  $('.' + id + '-down').removeClass('downvote').removeClass(id + '-down').addClass('novote-down').addClass(id + '-nodown').css({'color': '#008CBA'});
-  vote_value += difference;
-  $('.' + id + '-sum').html(String(vote_value));
+  $('.' + id + '-down').css({'color': '#008CBA'}).removeClass(id + '-down').addClass(id + '-nodown');
+  page_votes += difference;
+  $('.' + id + '-sum').html(String(page_votes));
 }
