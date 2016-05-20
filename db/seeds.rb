@@ -1,7 +1,8 @@
 def read_shows
   counter = 1
+
   until counter >= 21
-    HTTParty.get("http://api.seatgeek.com/2/events?per_page=5000&page=#{counter}")["events"].each do |event|
+    HTTParty.get("http://api.seatgeek.com/2/events?per_page=5000&page=#{counter}&client_id=#{Rails.application.secrets.seatgeek_id}&client_secret=#{Rails.application.secrets.seatgeek_secret}")["events"].each do |event|
       if (event["venue"]["city"].downcase == "boston" || event["venue"]["city"].downcase == "cambridge") && event["type"].downcase == "concert"
         venue = Venue.find_or_create_by(name: event["venue"]["name"], latitude: event["venue"]["location"]["lat"], longitude: event["venue"]["location"]["lon"])
         band = Band.find_or_create_by(name: event["performers"].first["name"])

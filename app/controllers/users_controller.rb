@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user_shows = []
     if @user.favorite_venues
       @user.favorite_venues.shuffle.take(3).each do |fav_venue|
-        binding.pry
+
         fav_venue.venue.shows.take(4).each do |show|
           @user_shows << show
         end
