@@ -3,7 +3,7 @@ class Venue < ActiveRecord::Base
    has_many :bands, through: :shows
    has_many :reviews, as: :reviewable
 
-   validates :name, presence: true
+   validates :name, presence: true, uniqueness: true
    validates :latitude, presence: true
    validates :longitude, presence: true
    paginates_per 15

@@ -3,7 +3,7 @@ class Band < ActiveRecord::Base
   has_many :venues, through: :shows
   has_many :reviews, as: :reviewable
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   paginates_per 15
 
   def average_rating
