@@ -6,7 +6,6 @@ gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -54,8 +53,9 @@ gem 'factory_girl', group: [:development, :test]
 gem 'valid_attribute', group: [:development, :test]
 gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.5'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'rspotify'
 gem 'kaminari'
 gem 'jquery-ui-rails'
+gem 'sass-rails', '~> 5.0'
